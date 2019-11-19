@@ -147,11 +147,8 @@ C<hypervisor> - The hypervisor type of the instance (C<ovm> | C<xen>).
 =item *
 
 C<iam-instance-profile.arn> - The instance profile associated with the
-instance. Specified as an ARN.
-
-=item *
-
-C<image-id> - The ID of the image used to launch the instance.
+instance. Specified as an ARN. C<image-id> - The ID of the image used
+to launch the instance.
 
 =item *
 
@@ -210,6 +207,21 @@ for the instance in the launch group (for example, 0, 1, 2, and so on).
 =item *
 
 C<launch-time> - The time when the instance was launched.
+
+=item *
+
+C<metadata-http-tokens> - The metadata request authorization state
+(C<optional> | C<required>)
+
+=item *
+
+C<metadata-http-put-response-hop-limit> - The http metadata request put
+response hop limit (integer, possible values C<1> to C<64>)
+
+=item *
+
+C<metadata-http-endpoint> - Enable or disable metadata access on http
+endpoint (C<enabled> | C<disabled>)
 
 =item *
 

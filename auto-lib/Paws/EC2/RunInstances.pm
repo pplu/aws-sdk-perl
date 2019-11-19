@@ -25,6 +25,7 @@ package Paws::EC2::RunInstances;
   has LaunchTemplate => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateSpecification');
   has LicenseSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LicenseConfigurationRequest]', traits => ['NameInRequest'], request_name => 'LicenseSpecification' );
   has MaxCount => (is => 'ro', isa => 'Int', required => 1);
+  has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::InstanceMetadataOptionsRequest');
   has MinCount => (is => 'ro', isa => 'Int', required => 1);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::RunInstancesMonitoringEnabled');
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification]', traits => ['NameInRequest'], request_name => 'networkInterface' );
@@ -147,8 +148,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },                                                              # OPTIONAL
       LicenseSpecifications =>
         [ { LicenseConfigurationArn => 'MyString', }, ... ],          # OPTIONAL
+      MetadataOptions => {
+        HttpEndpoint => 'disabled',    # values: disabled, enabled; OPTIONAL
+        HttpPutResponseHopLimit => 1,
+        HttpTokens => 'optional',      # values: optional, required; OPTIONAL
+      },    # OPTIONAL
       Monitoring => {
-        Enabled => 1,                                                 # OPTIONAL
+        Enabled => 1,    # OPTIONAL
 
       },    # OPTIONAL
       NetworkInterfaces => [
@@ -461,6 +467,14 @@ and how to request an increase, see How many instances can I run in
 Amazon EC2
 (http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)
 in the Amazon EC2 FAQ.
+
+
+
+=head2 MetadataOptions => L<Paws::EC2::InstanceMetadataOptionsRequest>
+
+The metadata options for the instance. For more information, see
+Instance Metadata and User Data
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).
 
 
 

@@ -22,6 +22,7 @@ package Paws::EC2::Instance;
   has KeyName => (is => 'ro', isa => 'Str', request_name => 'keyName', traits => ['NameInRequest']);
   has LaunchTime => (is => 'ro', isa => 'Str', request_name => 'launchTime', traits => ['NameInRequest']);
   has Licenses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LicenseConfiguration]', request_name => 'licenseSet', traits => ['NameInRequest']);
+  has MetadataOptions => (is => 'ro', isa => 'Paws::EC2::InstanceMetadataOptionsResponse', request_name => 'metadataOptions', traits => ['NameInRequest']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', request_name => 'monitoring', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterface]', request_name => 'networkInterfaceSet', traits => ['NameInRequest']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', request_name => 'placement', traits => ['NameInRequest']);
@@ -195,6 +196,11 @@ associated key pair.
 =head2 Licenses => ArrayRef[L<Paws::EC2::LicenseConfiguration>]
 
   The license configurations.
+
+
+=head2 MetadataOptions => L<Paws::EC2::InstanceMetadataOptionsResponse>
+
+  The metadata options for the instance.
 
 
 =head2 Monitoring => L<Paws::EC2::Monitoring>

@@ -126,6 +126,11 @@ C<vpn-connection-id> - The ID of the VPN connection.
 C<vpn-gateway-id> - The ID of a virtual private gateway associated with
 the VPN connection.
 
+=item *
+
+C<transit-gateway-id> - The ID of a transit gateway associated with the
+VPN connection.
+
 =back
 
 
