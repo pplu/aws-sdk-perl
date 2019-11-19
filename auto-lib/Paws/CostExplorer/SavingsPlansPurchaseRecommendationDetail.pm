@@ -8,6 +8,7 @@ package Paws::CostExplorer::SavingsPlansPurchaseRecommendationDetail;
   has EstimatedAverageUtilization => (is => 'ro', isa => 'Str');
   has EstimatedMonthlySavingsAmount => (is => 'ro', isa => 'Str');
   has EstimatedOnDemandCost => (is => 'ro', isa => 'Str');
+  has EstimatedOnDemandCostWithCurrentCommitment => (is => 'ro', isa => 'Str');
   has EstimatedROI => (is => 'ro', isa => 'Str');
   has EstimatedSavingsAmount => (is => 'ro', isa => 'Str');
   has EstimatedSavingsPercentage => (is => 'ro', isa => 'Str');
@@ -94,6 +95,13 @@ Plans.
 
   The remaining On-Demand cost estimated to not be covered by the
 recommended Savings Plans, over the length of the lookback period.
+
+
+=head2 EstimatedOnDemandCostWithCurrentCommitment => Str
+
+  The estimated On-Demand costs you would expect with no additional
+commitment, based on your usage of the selected time period and the
+Savings Plans you own.
 
 
 =head2 EstimatedROI => Str

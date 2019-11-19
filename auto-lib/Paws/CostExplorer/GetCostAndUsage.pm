@@ -94,9 +94,6 @@ Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>, or C<HOURLY>.
 If C<Granularity> isn't set, the response object doesn't include the
 C<Granularity>, either C<MONTHLY> or C<DAILY>, or C<HOURLY>.
 
-The C<GetCostAndUsageRequest> operation supports only C<DAILY> and
-C<MONTHLY> granularities.
-
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
@@ -109,7 +106,7 @@ strings.
 
 Valid values are C<AZ>, C<INSTANCE_TYPE>, C<LEGAL_ENTITY_NAME>,
 C<LINKED_ACCOUNT>, C<OPERATION>, C<PLATFORM>, C<PURCHASE_TYPE>,
-C<SERVICE>, C<TAGS>, C<TENANCY>, and C<USAGE_TYPE>.
+C<SERVICE>, C<TAGS>, C<TENANCY>, C<RECORD_TYPE>, and C<USAGE_TYPE>.
 
 
 

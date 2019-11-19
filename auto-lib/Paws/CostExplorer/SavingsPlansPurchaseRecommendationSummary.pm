@@ -4,6 +4,7 @@ package Paws::CostExplorer::SavingsPlansPurchaseRecommendationSummary;
   has CurrentOnDemandSpend => (is => 'ro', isa => 'Str');
   has DailyCommitmentToPurchase => (is => 'ro', isa => 'Str');
   has EstimatedMonthlySavingsAmount => (is => 'ro', isa => 'Str');
+  has EstimatedOnDemandCostWithCurrentCommitment => (is => 'ro', isa => 'Str');
   has EstimatedROI => (is => 'ro', isa => 'Str');
   has EstimatedSavingsAmount => (is => 'ro', isa => 'Str');
   has EstimatedSavingsPercentage => (is => 'ro', isa => 'Str');
@@ -66,6 +67,13 @@ the lookback period.
 
   The estimated monthly savings amount, based on the recommended Savings
 Plans purchase.
+
+
+=head2 EstimatedOnDemandCostWithCurrentCommitment => Str
+
+  The estimated On-Demand costs you would expect with no additional
+commitment, based on your usage of the selected time period and the
+Savings Plans you own.
 
 
 =head2 EstimatedROI => Str
