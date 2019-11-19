@@ -71,7 +71,7 @@ ListInstanceProfilesForRole
 more information about ARNs and how to use them in policies, see IAM
 Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> CreateDate => Str
@@ -84,7 +84,7 @@ in the I<Using IAM> guide.
   The stable and unique string identifying the instance profile. For more
 information about IDs, see IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> InstanceProfileName => Str
@@ -97,7 +97,7 @@ in the I<Using IAM> guide.
   The path to the instance profile. For more information about paths, see
 IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> Roles => ArrayRef[L<Paws::IAM::Role>]

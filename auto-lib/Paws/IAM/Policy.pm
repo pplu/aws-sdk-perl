@@ -49,7 +49,7 @@ GetPolicy, and ListPolicies operations.
 For more information about managed policies, refer to Managed Policies
 and Inline Policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -97,7 +97,7 @@ role.
 
 For more information about paths, see IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 PermissionsBoundaryUsageCount => Int
@@ -117,7 +117,7 @@ in the I<IAM User Guide>.
 
 For more information about IDs, see IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 PolicyName => Str

@@ -41,7 +41,7 @@ ListEntitiesForPolicy operation.
 For more information about managed policies, refer to Managed Policies
 and Inline Policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 =head1 ATTRIBUTES
 

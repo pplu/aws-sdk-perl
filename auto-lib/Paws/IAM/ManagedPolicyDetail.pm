@@ -52,7 +52,7 @@ GetAccountAuthorizationDetails operation.
 For more information about managed policies, see Managed Policies and
 Inline Policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -82,7 +82,7 @@ policy is attached to.
 For more information about policy versions, see Versioning for Managed
 Policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 Description => Str
@@ -102,7 +102,7 @@ role.
 
 For more information about paths, see IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 PermissionsBoundaryUsageCount => Int
@@ -122,7 +122,7 @@ in the I<IAM User Guide>.
 
 For more information about IDs, see IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 PolicyName => Str

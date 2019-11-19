@@ -75,7 +75,7 @@ GetAccountAuthorizationDetails operation.
   The path to the user. For more information about paths, see IAM
 Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
@@ -102,7 +102,7 @@ I<IAM User Guide>.
   The stable and unique string identifying the user. For more information
 about IDs, see IAM Identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
-in the I<Using IAM> guide.
+in the I<IAM User Guide>.
 
 
 =head2 UserName => Str
