@@ -215,14 +215,14 @@ specified in the build project.
 The name of a compute type for this build that overrides the one
 specified in the build project.
 
-Valid values are: C<"BUILD_GENERAL1_SMALL">, C<"BUILD_GENERAL1_MEDIUM">, C<"BUILD_GENERAL1_LARGE">
+Valid values are: C<"BUILD_GENERAL1_SMALL">, C<"BUILD_GENERAL1_MEDIUM">, C<"BUILD_GENERAL1_LARGE">, C<"BUILD_GENERAL1_2XLARGE">
 
 =head2 EnvironmentTypeOverride => Str
 
 A container type for this build that overrides the one specified in the
 build project.
 
-Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">
+Valid values are: C<"WINDOWS_CONTAINER">, C<"LINUX_CONTAINER">, C<"LINUX_GPU_CONTAINER">, C<"ARM_CONTAINER">
 
 =head2 EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
 

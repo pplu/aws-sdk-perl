@@ -234,6 +234,10 @@ C<BatchDeleteBuilds>: Deletes one or more builds.
 
 =item *
 
+C<BatchGetBuilds>: Gets information about one or more builds.
+
+=item *
+
 C<BatchGetProjects>: Gets information about one or more build projects.
 A I<build project> defines how AWS CodeBuild runs a build. This
 includes information such as where to get the source code to build, the
@@ -256,11 +260,12 @@ is pushed to the repository.
 
 =item *
 
-C<UpdateWebhook>: Changes the settings of an existing webhook.
+C<DeleteProject>: Deletes a build project.
 
 =item *
 
-C<DeleteProject>: Deletes a build project.
+C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
+or Bitbucket source credentials.
 
 =item *
 
@@ -271,16 +276,13 @@ pushed to the repository.
 
 =item *
 
-C<ListProjects>: Gets a list of build project names, with each build
-project name representing a single build project.
+C<ImportSourceCredentials>: Imports the source repository credentials
+for an AWS CodeBuild project that has its source code stored in a
+GitHub, GitHub Enterprise, or Bitbucket repository.
 
 =item *
 
-C<UpdateProject>: Changes the settings of an existing build project.
-
-=item *
-
-C<BatchGetBuilds>: Gets information about one or more builds.
+C<InvalidateProjectCache>: Resets the cache for a project.
 
 =item *
 
@@ -294,6 +296,23 @@ build project, with each build ID representing a single build.
 
 =item *
 
+C<ListCuratedEnvironmentImages>: Gets information about Docker images
+that are managed by AWS CodeBuild.
+
+=item *
+
+C<ListProjects>: Gets a list of build project names, with each build
+project name representing a single build project.
+
+=item *
+
+C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
+objects. Each C<SourceCredentialsInfo> object includes the
+authentication type, token ARN, and type of source provider for one set
+of credentials.
+
+=item *
+
 C<StartBuild>: Starts running a build.
 
 =item *
@@ -302,26 +321,11 @@ C<StopBuild>: Attempts to stop running a build.
 
 =item *
 
-C<ListCuratedEnvironmentImages>: Gets information about Docker images
-that are managed by AWS CodeBuild.
+C<UpdateProject>: Changes the settings of an existing build project.
 
 =item *
 
-C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
-or Bitbucket source credentials.
-
-=item *
-
-C<ImportSourceCredentials>: Imports the source repository credentials
-for an AWS CodeBuild project that has its source code stored in a
-GitHub, GitHub Enterprise, or Bitbucket repository.
-
-=item *
-
-C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
-objects. Each C<SourceCredentialsInfo> object includes the
-authentication type, token ARN, and type of source provider for one set
-of credentials.
+C<UpdateWebhook>: Changes the settings of an existing webhook.
 
 =back
 
@@ -360,7 +364,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetBuilds>
 
 Returns: a L<Paws::CodeBuild::BatchGetBuildsOutput> instance
 
-Gets information about builds.
+Gets information about one or more builds.
 
 
 =head2 BatchGetProjects
@@ -376,7 +380,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchGetProjects>
 
 Returns: a L<Paws::CodeBuild::BatchGetProjectsOutput> instance
 
-Gets information about build projects.
+Gets information about one or more build projects.
 
 
 =head2 CreateProject

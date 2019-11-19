@@ -58,10 +58,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Environment => {
         ComputeType => 'BUILD_GENERAL1_SMALL'
-        , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE
+        , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE, BUILD_GENERAL1_2XLARGE
         Image => 'MyNonEmptyString',    # min: 1
-        Type =>
-          'WINDOWS_CONTAINER',    # values: WINDOWS_CONTAINER, LINUX_CONTAINER
+        Type  => 'WINDOWS_CONTAINER'
+        , # values: WINDOWS_CONTAINER, LINUX_CONTAINER, LINUX_GPU_CONTAINER, ARM_CONTAINER
         Certificate          => 'MyString',    # OPTIONAL
         EnvironmentVariables => [
           {
