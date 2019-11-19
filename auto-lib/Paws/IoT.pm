@@ -84,6 +84,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ClearDefaultAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ConfirmTopicRuleDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ConfirmTopicRuleDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateAuthorizer', @_);
@@ -172,6 +177,11 @@ package Paws::IoT;
   sub CreateTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTopicRuleDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateTopicRuleDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteAccountAuditConfiguration {
@@ -277,6 +287,11 @@ package Paws::IoT;
   sub DeleteTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTopicRuleDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteTopicRuleDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteV2LoggingLevel {
@@ -494,6 +509,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetTopicRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTopicRuleDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::GetTopicRuleDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetV2LoggingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetV2LoggingOptions', @_);
@@ -697,6 +717,11 @@ package Paws::IoT;
   sub ListThingTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListThingTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTopicRuleDestinations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListTopicRuleDestinations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTopicRules {
@@ -907,6 +932,11 @@ package Paws::IoT;
   sub UpdateThingGroupsForThing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateThingGroupsForThing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTopicRuleDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateTopicRuleDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ValidateSecurityProfileBehaviors {
@@ -1768,7 +1798,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeMitigationAction DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer ConfirmTopicRuleDestination CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule CreateTopicRuleDestination DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteTopicRuleDestination DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeMitigationAction DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetTopicRuleDestination GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRuleDestinations ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing UpdateTopicRuleDestination ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -2123,6 +2153,26 @@ Each argument is described in detail in: L<Paws::IoT::ClearDefaultAuthorizer>
 Returns: a L<Paws::IoT::ClearDefaultAuthorizerResponse> instance
 
 Clears the default authorizer.
+
+
+=head2 ConfirmTopicRuleDestination
+
+=over
+
+=item ConfirmationToken => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ConfirmTopicRuleDestination>
+
+Returns: a L<Paws::IoT::ConfirmTopicRuleDestinationResponse> instance
+
+Confirms a topic rule destination. When you create a rule requiring a
+destination, AWS IoT sends a confirmation message to the endpoint or
+base address you specify. The message includes a token which you pass
+back when calling C<ConfirmTopicRuleDestination> to confirm that you
+own or have access to the endpoint.
 
 
 =head2 CreateAuthorizer
@@ -2617,6 +2667,23 @@ user who has permission to create rules will be able to access data
 processed by the rule.
 
 
+=head2 CreateTopicRuleDestination
+
+=over
+
+=item DestinationConfiguration => L<Paws::IoT::TopicRuleDestinationConfiguration>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateTopicRuleDestination>
+
+Returns: a L<Paws::IoT::CreateTopicRuleDestinationResponse> instance
+
+Creates a topic rule destination. The destination must be confirmed
+prior to use.
+
+
 =head2 DeleteAccountAuditConfiguration
 
 =over
@@ -3013,6 +3080,22 @@ Each argument is described in detail in: L<Paws::IoT::DeleteTopicRule>
 Returns: nothing
 
 Deletes the rule.
+
+
+=head2 DeleteTopicRuleDestination
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteTopicRuleDestination>
+
+Returns: a L<Paws::IoT::DeleteTopicRuleDestinationResponse> instance
+
+Deletes a topic rule destination.
 
 
 =head2 DeleteV2LoggingLevel
@@ -3556,8 +3639,7 @@ Each argument is described in detail in: L<Paws::IoT::GetCardinality>
 
 Returns: a L<Paws::IoT::GetCardinalityResponse> instance
 
-Returns the number of things with distinct values for the aggregation
-field.
+Returns the approximate count of unique values that match the query.
 
 
 =head2 GetEffectivePolicies
@@ -3666,10 +3748,17 @@ Each argument is described in detail in: L<Paws::IoT::GetPercentiles>
 
 Returns: a L<Paws::IoT::GetPercentilesResponse> instance
 
-Returns the percentile values for the aggregation field. The results
-from GetPercentiles is an approximation. The default percentile
-groupings are: 1,5,25,50,75,95,99. You can specify custom percentile
-grouping using the percents argument to the GetPercentiles API.
+Groups the aggregated values that match the query into percentile
+groupings. The default percentile groupings are: 1,5,25,50,75,95,99,
+although you can specify your own when you call C<GetPercentiles>. This
+function returns a value for each percentile group specified (or the
+default percentile groupings). The percentile group "1" contains the
+aggregated field value that occurs in approximately one percent of the
+values that match the query. The percentile group "5" contains the
+aggregated field value that occurs in approximately five percent of the
+values that match the query, and so on. The result is an approximation,
+the more values that match the query, the more accurate the percentile
+values.
 
 
 =head2 GetPolicy
@@ -3741,10 +3830,7 @@ Each argument is described in detail in: L<Paws::IoT::GetStatistics>
 
 Returns: a L<Paws::IoT::GetStatisticsResponse> instance
 
-Gets statistics returns the count, average, sum, minimum, maximum,
-sumOfSquares, variance, and standard deviation for the specified
-aggregated field. If the aggregation field is of type String, only the
-count statistic is returned.
+Gets statistics about things that match the specified query.
 
 
 =head2 GetTopicRule
@@ -3761,6 +3847,22 @@ Each argument is described in detail in: L<Paws::IoT::GetTopicRule>
 Returns: a L<Paws::IoT::GetTopicRuleResponse> instance
 
 Gets information about the rule.
+
+
+=head2 GetTopicRuleDestination
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::GetTopicRuleDestination>
+
+Returns: a L<Paws::IoT::GetTopicRuleDestinationResponse> instance
+
+Gets information about a topic rule destination.
 
 
 =head2 GetV2LoggingOptions
@@ -4655,6 +4757,24 @@ Returns: a L<Paws::IoT::ListThingTypesResponse> instance
 Lists the existing thing types.
 
 
+=head2 ListTopicRuleDestinations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListTopicRuleDestinations>
+
+Returns: a L<Paws::IoT::ListTopicRuleDestinationsResponse> instance
+
+Lists all the topic rule destinations in your AWS account.
+
+
 =head2 ListTopicRules
 
 =over
@@ -4797,13 +4917,7 @@ Each argument is described in detail in: L<Paws::IoT::RegisterThing>
 
 Returns: a L<Paws::IoT::RegisterThingResponse> instance
 
-Provisions a thing in the device registry. RegisterThing calls other
-AWS IoT control plane APIs. These calls might exceed your account level
-AWS IoT Throttling Limits
-(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot)
-and cause throttle errors. Please contact AWS Customer Support
-(https://console.aws.amazon.com/support/home) to raise your throttling
-limits if necessary.
+Provisions a thing.
 
 
 =head2 RejectCertificateTransfer
@@ -5599,6 +5713,25 @@ Each argument is described in detail in: L<Paws::IoT::UpdateThingGroupsForThing>
 Returns: a L<Paws::IoT::UpdateThingGroupsForThingResponse> instance
 
 Updates the groups to which the thing belongs.
+
+
+=head2 UpdateTopicRuleDestination
+
+=over
+
+=item Arn => Str
+
+=item Status => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateTopicRuleDestination>
+
+Returns: a L<Paws::IoT::UpdateTopicRuleDestinationResponse> instance
+
+Updates a topic rule destination. You use this to change the status,
+endpoint URL, or confirmation URL of the destination.
 
 
 =head2 ValidateSecurityProfileBehaviors

@@ -1,14 +1,14 @@
-package Paws::IoT::PercentPair;
+package Paws::IoT::HttpActionHeader;
   use Moose;
-  has Percent => (is => 'ro', isa => 'Num', request_name => 'percent', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
+  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::PercentPair
+Paws::IoT::HttpActionHeader
 
 =head1 USAGE
 
@@ -19,32 +19,32 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoT::PercentPair object:
+As an example, if Att1 is expected to be a Paws::IoT::HttpActionHeader object:
 
-  $service_obj->Method(Att1 => { Percent => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::PercentPair object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::HttpActionHeader object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Percent
+  $result->Att1->Key
 
 =head1 DESCRIPTION
 
-Describes the percentile and percentile value.
+The HTTP action header.
 
 =head1 ATTRIBUTES
 
 
-=head2 Percent => Num
+=head2 B<REQUIRED> Key => Str
 
-  The percentile.
+  The HTTP header key.
 
 
-=head2 Value => Num
+=head2 B<REQUIRED> Value => Str
 
-  The value of the percentile.
+  The HTTP header value. Substitution templates are supported.
 
 
 

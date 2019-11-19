@@ -1,14 +1,13 @@
-package Paws::IoT::PercentPair;
+package Paws::IoT::HttpUrlDestinationProperties;
   use Moose;
-  has Percent => (is => 'ro', isa => 'Num', request_name => 'percent', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+  has ConfirmationUrl => (is => 'ro', isa => 'Str', request_name => 'confirmationUrl', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::PercentPair
+Paws::IoT::HttpUrlDestinationProperties
 
 =head1 USAGE
 
@@ -19,32 +18,27 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoT::PercentPair object:
+As an example, if Att1 is expected to be a Paws::IoT::HttpUrlDestinationProperties object:
 
-  $service_obj->Method(Att1 => { Percent => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { ConfirmationUrl => $value, ..., ConfirmationUrl => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::PercentPair object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::HttpUrlDestinationProperties object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Percent
+  $result->Att1->ConfirmationUrl
 
 =head1 DESCRIPTION
 
-Describes the percentile and percentile value.
+HTTP URL destination properties.
 
 =head1 ATTRIBUTES
 
 
-=head2 Percent => Num
+=head2 ConfirmationUrl => Str
 
-  The percentile.
-
-
-=head2 Value => Num
-
-  The value of the percentile.
+  The URL used to confirm the HTTP topic rule destination URL.
 
 
 

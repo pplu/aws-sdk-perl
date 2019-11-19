@@ -1,14 +1,13 @@
-package Paws::IoT::PercentPair;
+package Paws::IoT::HttpAuthorization;
   use Moose;
-  has Percent => (is => 'ro', isa => 'Num', request_name => 'percent', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+  has Sigv4 => (is => 'ro', isa => 'Paws::IoT::SigV4Authorization', request_name => 'sigv4', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::PercentPair
+Paws::IoT::HttpAuthorization
 
 =head1 USAGE
 
@@ -19,32 +18,29 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoT::PercentPair object:
+As an example, if Att1 is expected to be a Paws::IoT::HttpAuthorization object:
 
-  $service_obj->Method(Att1 => { Percent => $value, ..., Value => $value  });
+  $service_obj->Method(Att1 => { Sigv4 => $value, ..., Sigv4 => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::PercentPair object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::HttpAuthorization object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Percent
+  $result->Att1->Sigv4
 
 =head1 DESCRIPTION
 
-Describes the percentile and percentile value.
+The authorization method used to send messages.
 
 =head1 ATTRIBUTES
 
 
-=head2 Percent => Num
+=head2 Sigv4 => L<Paws::IoT::SigV4Authorization>
 
-  The percentile.
-
-
-=head2 Value => Num
-
-  The value of the percentile.
+  Use Sig V4 authorization. For more information, see Signature Version 4
+Signing Process
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 
 

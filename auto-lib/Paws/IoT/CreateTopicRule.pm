@@ -83,6 +83,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RoleArn            => 'MyAwsArn',
               Separator          => 'MyFirehoseSeparator',    # OPTIONAL
             },    # OPTIONAL
+            Http => {
+              Url  => 'MyUrl',    # max: 2000
+              Auth => {
+                Sigv4 => {
+                  RoleArn       => 'MyAwsArn',
+                  ServiceName   => 'MyServiceName',
+                  SigningRegion => 'MySigningRegion',
+
+                },                # OPTIONAL
+              },    # OPTIONAL
+              ConfirmationUrl => 'MyUrl',    # max: 2000
+              Headers         => [
+                {
+                  Key   => 'MyHeaderKey',     # min: 1, max: 256
+                  Value => 'MyHeaderValue',
+
+                },
+                ...
+              ],                              # max: 100; OPTIONAL
+            },    # OPTIONAL
             IotAnalytics => {
               ChannelArn  => 'MyAwsArn',
               ChannelName => 'MyChannelName',    # OPTIONAL
@@ -188,6 +208,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             DeliveryStreamName => 'MyDeliveryStreamName',
             RoleArn            => 'MyAwsArn',
             Separator          => 'MyFirehoseSeparator',    # OPTIONAL
+          },    # OPTIONAL
+          Http => {
+            Url  => 'MyUrl',    # max: 2000
+            Auth => {
+              Sigv4 => {
+                RoleArn       => 'MyAwsArn',
+                ServiceName   => 'MyServiceName',
+                SigningRegion => 'MySigningRegion',
+
+              },                # OPTIONAL
+            },    # OPTIONAL
+            ConfirmationUrl => 'MyUrl',    # max: 2000
+            Headers         => [
+              {
+                Key   => 'MyHeaderKey',     # min: 1, max: 256
+                Value => 'MyHeaderValue',
+
+              },
+              ...
+            ],                              # max: 100; OPTIONAL
           },    # OPTIONAL
           IotAnalytics => {
             ChannelArn  => 'MyAwsArn',

@@ -17,7 +17,7 @@ Paws::IoT::GetCardinalityResponse
 
 =head2 Cardinality => Int
 
-The number of things that match the query.
+The approximate count of unique values that match the query.
 
 
 =head2 _request_id => Str

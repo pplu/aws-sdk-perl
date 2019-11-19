@@ -46,7 +46,8 @@ count is supported.
 
 =head2 Average => Num
 
-  The average of the aggregated field values.
+  The average of the aggregated fields. If the field data type is String
+this value is indeterminate.
 
 
 =head2 Count => Int
@@ -56,22 +57,25 @@ count is supported.
 
 =head2 Maximum => Num
 
-  The maximum aggregated field value.
+  The maximum value of the aggregated fields. If the field data type is
+String this value is indeterminate.
 
 
 =head2 Minimum => Num
 
-  The minimum aggregated field value.
+  The minimum value of the aggregated fields. If the field data type is
+String this value is indeterminate.
 
 
 =head2 StdDeviation => Num
 
-  The standard deviation of the aggregated field valuesl
+  The standard deviation of the aggregated field values.
 
 
 =head2 Sum => Num
 
-  The sum of the aggregated field values.
+  The sum of the aggregated fields. If the field data type is String this
+value is indeterminate.
 
 
 =head2 SumOfSquares => Num

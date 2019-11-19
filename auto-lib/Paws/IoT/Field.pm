@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Field 
 
 =head1 DESCRIPTION
 
-Describes the name and data type at a field.
+The field to aggregate.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ Describes the name and data type at a field.
 
 =head2 Type => Str
 
-  The datatype of the field.
+  The data type of the field.
 
 
 
