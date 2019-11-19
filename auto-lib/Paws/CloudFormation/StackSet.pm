@@ -6,6 +6,7 @@ package Paws::CloudFormation::StackSet;
   has ExecutionRoleName => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has StackSetARN => (is => 'ro', isa => 'Str');
+  has StackSetDriftDetectionDetails => (is => 'ro', isa => 'Paws::CloudFormation::StackSetDriftDetectionDetails');
   has StackSetId => (is => 'ro', isa => 'Str');
   has StackSetName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -96,6 +97,15 @@ and groups can include in their stack sets.
 =head2 StackSetARN => Str
 
   The Amazon Resource Number (ARN) of the stack set.
+
+
+=head2 StackSetDriftDetectionDetails => L<Paws::CloudFormation::StackSetDriftDetectionDetails>
+
+  Detailed information about the drift status of the stack set.
+
+For stack sets, contains information about the last I<completed> drift
+operation performed on the stack set. Information about drift
+operations currently in progress is not included.
 
 
 =head2 StackSetId => Str

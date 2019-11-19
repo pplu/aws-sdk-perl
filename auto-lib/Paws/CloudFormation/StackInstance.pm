@@ -1,6 +1,8 @@
 package Paws::CloudFormation::StackInstance;
   use Moose;
   has Account => (is => 'ro', isa => 'Str');
+  has DriftStatus => (is => 'ro', isa => 'Str');
+  has LastDriftCheckTimestamp => (is => 'ro', isa => 'Str');
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
@@ -52,6 +54,46 @@ the stack status.
 =head2 Account => Str
 
   The name of the AWS account that the stack instance is associated with.
+
+
+=head2 DriftStatus => Str
+
+  Status of the stack instance's actual configuration compared to the
+expected template and parameter configuration of the stack set to which
+it belongs.
+
+=over
+
+=item *
+
+C<DRIFTED>: The stack differs from the expected template and parameter
+configuration of the stack set to which it belongs. A stack instance is
+considered to have drifted if one or more of the resources in the
+associated stack have drifted.
+
+=item *
+
+C<NOT_CHECKED>: AWS CloudFormation has not checked if the stack
+instance differs from its expected stack set configuration.
+
+=item *
+
+C<IN_SYNC>: The stack instance's actual configuration matches its
+expected stack set configuration.
+
+=item *
+
+C<UNKNOWN>: This value is reserved for future use.
+
+=back
+
+
+
+=head2 LastDriftCheckTimestamp => Str
+
+  Most recent time when CloudFormation performed a drift detection
+operation on the stack instance. This value will be C<NULL> for any
+stack instance on which drift detection has not yet been performed.
 
 
 =head2 ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]

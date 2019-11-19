@@ -8,6 +8,7 @@ package Paws::CloudFormation::StackSetOperation;
   has OperationId => (is => 'ro', isa => 'Str');
   has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
   has RetainStacks => (is => 'ro', isa => 'Bool');
+  has StackSetDriftDetectionDetails => (is => 'ro', isa => 'Paws::CloudFormation::StackSetDriftDetectionDetails');
   has StackSetId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -110,6 +111,20 @@ operation.
 remove the stack instances from the specified stack set, but doesn't
 delete the stacks. You can't reassociate a retained stack, or add an
 existing, saved stack to a new stack set.
+
+
+=head2 StackSetDriftDetectionDetails => L<Paws::CloudFormation::StackSetDriftDetectionDetails>
+
+  Detailed information about the drift status of the stack set. This
+includes information about drift operations currently being performed
+on the stack set.
+
+this information will only be present for stack set operations whose
+C<Action> type is C<DETECT_DRIFT>.
+
+For more information, see Detecting Unmanaged Changes in Stack Sets
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html)
+in the AWS CloudFormation User Guide.
 
 
 =head2 StackSetId => Str

@@ -1,6 +1,8 @@
 package Paws::CloudFormation::StackSetSummary;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
+  has DriftStatus => (is => 'ro', isa => 'Str');
+  has LastDriftCheckTimestamp => (is => 'ro', isa => 'Str');
   has StackSetId => (is => 'ro', isa => 'Str');
   has StackSetName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -44,6 +46,47 @@ stack set.
 
   A description of the stack set that you specify when the stack set is
 created or updated.
+
+
+=head2 DriftStatus => Str
+
+  Status of the stack set's actual configuration compared to its expected
+template and parameter configuration. A stack set is considered to have
+drifted if one or more of its stack instances have drifted from their
+expected template and parameter configuration.
+
+=over
+
+=item *
+
+C<DRIFTED>: One or more of the stack instances belonging to the stack
+set stack differs from the expected template and parameter
+configuration. A stack instance is considered to have drifted if one or
+more of the resources in the associated stack have drifted.
+
+=item *
+
+C<NOT_CHECKED>: AWS CloudFormation has not checked the stack set for
+drift.
+
+=item *
+
+C<IN_SYNC>: All of the stack instances belonging to the stack set stack
+match from the expected template and parameter configuration.
+
+=item *
+
+C<UNKNOWN>: This value is reserved for future use.
+
+=back
+
+
+
+=head2 LastDriftCheckTimestamp => Str
+
+  Most recent time when CloudFormation performed a drift detection
+operation on the stack set. This value will be C<NULL> for any stack
+set on which drift detection has not yet been performed.
 
 
 =head2 StackSetId => Str
