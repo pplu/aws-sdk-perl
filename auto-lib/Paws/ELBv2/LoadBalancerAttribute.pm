@@ -86,7 +86,7 @@ The valid range is 1-4000 seconds. The default is 60 seconds.
 C<routing.http.drop_invalid_header_fields.enabled> - Indicates whether
 HTTP headers with invalid header fields are removed by the load
 balancer (C<true>) or routed to targets (C<false>). The default is
-C<true>.
+C<false>.
 
 =item *
 

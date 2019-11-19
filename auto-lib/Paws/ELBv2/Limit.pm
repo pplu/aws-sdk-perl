@@ -75,6 +75,18 @@ target-groups
 
 =item *
 
+target-groups-per-action-on-application-load-balancer
+
+=item *
+
+target-groups-per-action-on-network-load-balancer
+
+=item *
+
+target-groups-per-application-load-balancer
+
+=item *
+
 targets-per-application-load-balancer
 
 =item *
