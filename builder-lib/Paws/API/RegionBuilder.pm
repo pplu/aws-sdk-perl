@@ -26,6 +26,7 @@ package Paws::API::RegionBuilder {
     default => sub {
       my $self = shift;
       my $d = Data::Dumper->new([ $self->json ], [ 'regioninfo' ]);
+      $d->Terse(0);
       $d->Indent(1);
       $d->Pad('  ');
       $d->Quotekeys(0);

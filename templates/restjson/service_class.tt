@@ -1,20 +1,21 @@
 [%- IF (c.enums.size) -%]
-use Moose::Util::TypeConstraints;
+#use Moose::Util::TypeConstraints;
 [%- FOR enum_name IN c.enums.keys.sort %]
 enum '[% enum_name %]', [[% FOR val IN c.enums.$enum_name %]'[% val %]',[% END %]];
 [%- END %]
 [%- END -%]
 package [% c.api %];
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { '[% c.service %]' }
   sub signing_name { '[% c.signing_name %]' }
   sub version { '[% c.version %]' }
   sub flattened_arrays { [% c.flattened_arrays %] }
-  has max_attempts => (is => 'ro', isa => 'Int', default => [% c.service_max_attempts %]);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => [% c.service_max_attempts %]);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => '[% c.service_retry.base %]', type => '[% c.service_retry.type %]', growth_factor => [% c.service_retry.growth_factor %] }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   [%- FOREACH key IN c.retry.policies.keys.sort %]
      [%- policy = c.retry.policies.$key.applies_when.response %]
      [%- IF (policy.service_error_code) %]

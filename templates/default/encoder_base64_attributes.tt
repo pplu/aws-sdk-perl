@@ -1,0 +1,10 @@
+
+  use MIME::Base64;
+
+[%-
+    SET attr_ind = attr_ind + 1;
+    attr_str.$attr_ind = "has ${encoder.alias} => ( is => 'lazy', builder => sub { my \$self = shift; ";
+    IF encoder.encoding == 'Base64'; attr_str.$attr_ind = attr_str.$attr_ind _ " return MIME::Base64::decode(\$self->$param_name);";
+    ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ " die('Unrecognized Base64Attribute decode_as attribute');";
+    END;
+-%]

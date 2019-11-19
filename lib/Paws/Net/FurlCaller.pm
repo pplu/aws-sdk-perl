@@ -1,6 +1,6 @@
 package Paws::Net::FurlCaller;
   # This caller uses Furl
-  use Moose;
+  use Moo;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
   use Furl;
   use Paws::Net::APIResponse;

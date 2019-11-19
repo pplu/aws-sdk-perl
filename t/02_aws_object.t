@@ -3,13 +3,13 @@
 use lib 't/lib';
 
 package A::NEW::CALLER;
-  use Moose;
+  use Moo;
   with 'Paws::Net::CallerRole';
   sub do_call { return 'CALLER1' }
   sub caller_to_response {} 
 
 package A::NEW::CALLER2;
-  use Moose;
+  use Moo;
   with 'Paws::Net::CallerRole';
   sub do_call { return 'CALLER2' }
   sub caller_to_response {} 
@@ -38,14 +38,14 @@ use Test::Exception;
   
   my $svc2 = $aws->service('SQS', region => 'eu-west-1');
 
-  cmp_ok($svc->meta->name, 'eq', $svc2->meta->name, 'Got the same class calling service twice');
+  cmp_ok(ref $svc, 'eq', ref $svc2, 'Got the same class calling service twice');
 
   my $aws2 = Paws->new(config => { caller => 'A::NEW::CALLER2', credentials => 'Test::CustomCredentials' });
   my $svc3 = $aws2->service('SQS', region => 'eu-west-1');
 
   ok($svc3->caller->isa('A::NEW::CALLER2'), 'Correct custom caller class');
 
-  cmp_ok($svc2->caller->meta->name, 'ne', $svc3->caller->meta->name, 'Got different classes calling on different Paws instances');
+  cmp_ok(ref $svc2->caller, 'ne', ref $svc3->caller, 'Got different classes calling on different Paws instances');
 }
 
 {

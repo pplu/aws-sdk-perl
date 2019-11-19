@@ -1,5 +1,5 @@
 package Paws::Credential;
-  use Moose::Role;
+  use Moo::Role;
 
   requires 'access_key';
   requires 'secret_key';
@@ -10,5 +10,5 @@ package Paws::Credential;
     return (defined $self->access_key && defined $self->secret_key);
   }
 
-  no Moose;
+#  no Moose;
 1;

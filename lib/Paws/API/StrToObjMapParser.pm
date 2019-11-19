@@ -1,5 +1,5 @@
 package Paws::API::StrToObjMapParser;
-  use Moose::Role;
+  use Moo::Role;
 
   sub ValueFor {
     my ($self, $key) = shift;

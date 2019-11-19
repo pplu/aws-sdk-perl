@@ -1,9 +1,10 @@
 package Paws::Credential::ProviderChain;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
 
   has providers => (
     is => 'ro', 
-    isa => 'ArrayRef[Str]', 
+    isa => ArrayRef[Str], 
     default => sub {
       [ 'Paws::Credential::Environment', 
         'Paws::Credential::File', 

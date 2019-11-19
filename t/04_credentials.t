@@ -10,6 +10,10 @@ use Paws::Credential::InstanceProfile;
 use Paws::Credential::ECSContainerProfile;
 use Paws::Credential::ProviderChain;
 use Paws::Credential::File;
+use Paws::Credential::STS;
+use Paws::Credential::AssumeRole;
+use Paws::Credential::AssumeRoleWithSAML;
+use Paws::Credential::None;
 use Test::More;
 use Test::Exception;
 use Test::Warnings;
@@ -270,6 +274,33 @@ delete @ENV{qw(
   sleep 1;
   my $second_execution = $creds->access_key; # the test suite returns the timestamp of execution in the AK
   cmp_ok($first_execution, 'ne', $second_execution, 'Expiring credentials have been refreshed');
+}
+
+{
+  my $creds = Paws::Credential::STS->new(
+    Name => 'test',
+    DurationSeconds => 900,
+    Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}',
+  );
+}
+
+{
+  my $creds = Paws::Credential::AssumeRole->new(
+    DurationSeconds => 900,
+    Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}',
+    RoleArn => 'SomeStr',
+    RoleSessionName => 'SomeStr',
+  );
+}
+
+{
+  my $creds = Paws::Credential::AssumeRoleWithSAML->new(
+    DurationSeconds => 900,
+      Policy => '{"Version":"2012-10-17","Statement":[{"Effect": "Allow","Action":["ec2:DescribeInstances"],"Resource":"*"}]}',
+      RoleArn => 'SomeStr',
+      PrincipalArn => 'Str',
+      SAMLAssertion => 'Str',
+  );
 }
 
 done_testing;

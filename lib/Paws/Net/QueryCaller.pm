@@ -1,6 +1,6 @@
 package Paws::Net::QueryCaller;
   use Paws;
-  use Moose::Role;
+  use Moo::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
 
@@ -22,10 +22,11 @@ package Paws::Net::QueryCaller;
   sub _to_querycaller_params {
     my ($self, $params) = @_;
     my %p;
-    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+    my $params_hash = $params->params_map;
+    foreach my $att (keys %{$params_hash->{types} }) {
+      my $key = $params_hash->{NameInRequest}{$att} || $att;
       if (defined $params->$att) {
-        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        my $att_type = $params_hash->{types}{$att}{type};
 
         if (Paws->is_internal_type($att_type)) {
           if ($att_type eq 'Bool') {
@@ -65,7 +66,7 @@ package Paws::Net::QueryCaller;
           }
         } elsif ($params->$att->does('Paws::API::MapParser')){
           my $i = 1;
-          foreach my $map_key (sort $params->$att->meta->get_attribute_list){
+          foreach my $map_key (sort keys %{$params->$att->params_map->{types} }){
             next if (not defined $params->$att->$map_key);
             $p{ "$key.$i.Name" } = $map_key;
             $p{ "$key.$i.Value" } = $params->$att->$map_key;

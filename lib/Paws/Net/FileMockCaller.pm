@@ -1,19 +1,20 @@
 package Paws::Net::FileMockCaller;
-  use Moose;
+  use Moo;
 
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
 
   use Paws::Net::APIResponse;
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
-  use Moose::Util::TypeConstraints;
+#  use Moose::Util::TypeConstraints;
   use Path::Tiny;
+  use Types::Standard qw/Str HashRef ConsumerOf/;
 
-  has file => (is => 'rw', isa => 'Str', trigger => \&_set_file);
+  has file => (is => 'rw', isa => Str, trigger => \&_set_file);
 
   has real_caller => (
     is => 'ro',
-    does => 'Paws::Net::CallerRole',
+    isa => ConsumerOf['Paws::Net::CallerRole'],
     default => sub {
       require Paws::Net::Caller;
       Paws::Net::Caller->new;
@@ -30,7 +31,7 @@ package Paws::Net::FileMockCaller;
 
   has file_contents => (
     is => 'ro',
-    isa => 'HashRef',
+    isa => HashRef,
     lazy => 1,
     clearer => '_clear_file_contents',
     default => sub {
@@ -43,21 +44,21 @@ package Paws::Net::FileMockCaller;
 
   has service => (
     is => 'ro',
-    isa => 'Str',
+    isa => Str,
     clearer => '_clear_service',
     lazy => 1,
     default => sub { shift->file_contents->{ request }->{ service } }
   );
   has method => (
     is => 'ro',
-    isa => 'Str',
+    isa => Str,
     clearer => '_clear_method',
     lazy => 1,
     default => sub { shift->file_contents->{ request }->{ call } }
   );
   has params => (
     is => 'ro',
-    isa => 'HashRef',
+    isa => HashRef,
     clearer => '_clear_params',
     lazy => 1,
     default => sub { shift->file_contents->{ request }->{ params } }

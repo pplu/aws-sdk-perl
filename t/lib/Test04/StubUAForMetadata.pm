@@ -1,8 +1,8 @@
 package Test04::StubUAForMetadata;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int/;
 
-  has calls => (is => 'rw', isa => 'Int', default => 0, traits => ['Counter'],
-                handles => { increment_calls => 'inc' });
+  has calls => (is => 'rw', isa => Int, default => 0, );
   use DateTime::Format::ISO8601;
 
   sub get {
@@ -13,7 +13,7 @@ package Test04::StubUAForMetadata;
     }
 
     if ($url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/MyRole') {
-      $self->increment_calls;
+      $self->calls($self->calls+1);
       if ($self->calls == 1){
         return { success => 1, content => '{"Code" : "Success","LastUpdated" : "2012-04-26T16:39:16Z","Type" : "AWS-HMAC","AccessKeyId" : "AK1","SecretAccessKey" : "SK1","Token" : "TK1","Expiration" : "' . DateTime->now->add(seconds => 241)->iso8601 .'Z"}' };
       } elsif ($self->calls == 2){

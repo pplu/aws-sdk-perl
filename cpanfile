@@ -1,6 +1,9 @@
 requires 'perl' => '5.010001';
-requires 'Moose';
-requires 'MooseX::ClassAttribute';
+#requires 'Moose';
+#requires 'MooseX::ClassAttribute';
+requires 'Moo';
+requires 'MooX::ClassAttribute';
+requires 'Types::Standard';
 requires 'HTTP::Tiny';
 requires 'Throwable::Error';
 requires 'Data::Compare';

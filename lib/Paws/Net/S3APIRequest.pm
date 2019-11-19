@@ -1,5 +1,6 @@
 package Paws::Net::S3APIRequest;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/InstanceOf Str Int Undef/;
   extends 'Paws::Net::APIRequest';
 
   use URI;
@@ -7,14 +8,14 @@ package Paws::Net::S3APIRequest;
   use MIME::Base64 qw(encode_base64);
   use Digest::MD5 'md5';
 
-  has _uri_obj => (is => 'ro', isa => 'URI', lazy => 1, default => sub {
+  has _uri_obj => (is => 'ro', isa => InstanceOf['URI'], lazy => 1, default => sub {
     return URI->new(shift->url);
   });
 
   #Code taken from https://metacpan.org/source/LEEJO/AWS-S3-0.10/lib/AWS/S3/Signer.pm
   has 'bucket_name' => (
     is       => 'ro',
-    isa      => 'Str',
+    isa      => Str,
     required => 1,
     lazy     => 1,
     default  => sub {
@@ -31,7 +32,7 @@ package Paws::Net::S3APIRequest;
 
   has 'date' => (
     is       => 'ro',
-    isa      => 'Str',
+    isa      => Str,
     default  => sub {
       my $s = shift;
       my $http_date = time2isoz( time );
@@ -43,7 +44,7 @@ package Paws::Net::S3APIRequest;
 
   has 'content_type' => (
     is       => 'ro',
-    isa      => 'Str',
+    isa      => Str,
     lazy     => 1,
     default  => sub {
       my $s = shift;
@@ -55,7 +56,7 @@ package Paws::Net::S3APIRequest;
 
   has 'content_md5' => (
     is       => 'ro',
-    isa      => 'Str',
+    isa      => Str,
     lazy     => 1,
     default  => sub {
       my $s = shift;
@@ -66,7 +67,7 @@ package Paws::Net::S3APIRequest;
 
   has 'content_length' => (
     is       => 'ro',
-    isa      => 'Int|Undef',
+    isa      => Int|Undef,
     lazy     => 1,
     default  => sub { length( shift->content || q[] ) }
   );

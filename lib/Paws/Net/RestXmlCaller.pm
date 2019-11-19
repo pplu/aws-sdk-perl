@@ -1,11 +1,10 @@
 package Paws::Net::RestXmlCaller;
   use Paws;
-  use Moose::Role;
+  use Moo::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime);
   use URI::Template;
   use URI::Escape;
-  use Moose::Util;
 
   use Paws::Net::RestXMLResponse;
 
@@ -26,16 +25,16 @@ package Paws::Net::RestXmlCaller;
   sub _to_querycaller_params {
     my ($self, $params) = @_;
 
-
+    my $params_hash = $params->params_map;
     my %p;
-    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+    foreach my $att (keys %{ $params_hash->{types} }) {
       
       # e.g. S3 metadata objects, which are passed in the header
-      next if $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInHeaders');
+      next if exists $params_hash->{ParamInHeaders}{$att};
 
-      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
+      my $key = $params_hash->{ParamInQuery}{$att} || $att;
       if (defined $params->$att) {
-        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        my $att_type = $params_hash->{types}{$att}{type};
 
         if (Paws->is_internal_type($att_type)) {
           $p{ $key } = $params->{$att};
@@ -65,7 +64,7 @@ package Paws::Net::RestXmlCaller;
 
   sub _call_uri {
     my ($self, $call) = @_;
-    my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
+    my $uri_template = $call->_api_uri; # in auto-lib/<service>/<method>.pm
 
     my @uri_attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
@@ -76,15 +75,16 @@ package Paws::Net::RestXmlCaller;
       $uri_attrib_is_greedy{$att_name} = $greedy;
     }
 
-    foreach my $attribute ($call->meta->get_all_attributes)
+    my $params_hash = $call->params_map;
+    foreach my $attribute (keys %{$params_hash->{types}})
     {
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-        my $att_name = $attribute->name;
-        if ($uri_attrib_is_greedy{$att_name}) {
-            $vars->{ $attribute->uri_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
-            $uri_template =~ s{$att_name\+}{\+$att_name}g;
+      if ($params_hash->{ParamInURI}{$attribute}) {
+#        my $att_name = $params_hash->{ParamInURL}{$attribute} || $attribute;
+        if ($uri_attrib_is_greedy{$attribute}) {
+            $vars->{ $params_hash->{ParamInURI}{$attribute} } =  uri_escape_utf8($call->$attribute, q[^A-Za-z0-9\-\._~/]);
+            $uri_template =~ s{$attribute\+}{\+$attribute}g;
         } else {
-            $vars->{ $attribute->uri_name } = $call->$att_name;
+            $vars->{ $params_hash->{ParamInURI}{$attribute} } = $call->$attribute;
         }
       }
     }
@@ -96,31 +96,34 @@ package Paws::Net::RestXmlCaller;
 
   sub _to_header_params {
     my ($self, $request, $call) = @_;
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->does('Paws::API::Attribute::Trait::AutoInHeader')) {
-        if ( $attribute->auto eq 'MD5' ) {
+      
+    my $params_hash = $call->params_map;
+    foreach my $attribute (keys %{ $params_hash->{types} }) {
+      if ($params_hash->{AutoInHeader}{$attribute}) {
+        if ( $params_hash->{AutoInHeader}{$attribute}{auto} eq 'MD5' ) {
+          $DB::single=1;
           require MIME::Base64;
           require Digest::MD5;
           my $value;
-          if ( $attribute->has_value($call) ) {
-             $value = $attribute->get_value($call);
+          if ( $call->$attribute ) {
+             $value = $call->$attribute;
           }
           else {
             $value = MIME::Base64::encode_base64( Digest::MD5::md5( $request->content // '' ) );
             chomp $value;
           }
-          $request->headers->header( $attribute->header_name => $value );
+          $request->headers->header( $params_hash->{AutoInHeader}{$attribute}{header_name} => $value );
         }
         next;
       }
-      next unless $attribute->has_value($call);
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
-        my $value = $attribute->get_value($call);
-        $request->headers->header( $attribute->header_name => $value );
+      next unless $call->$attribute;
+      if ($params_hash->{ParamInHeader}{$attribute}) {
+        my $value = $call->$attribute;
+        $request->headers->header( $params_hash->{ParamInHeader}{$attribute} => $value );
       }
-      elsif ($attribute->does('Paws::API::Attribute::Trait::ParamInHeaders')) {
-        my $map = $attribute->get_value($call)->Map;
-        my $prefix = $attribute->header_prefix;
+      elsif ($params_hash->{ParamInHeaders}{$attribute}) {
+        my $map = $call->$attribute->Map;
+        my $prefix = $params_hash->{ParamInHeaders}{$attribute};
         for my $header (keys %{$map}) { 
           my $header_name = $prefix . $header;
           $request->headers->header( $header_name => $map->{$header} );
@@ -147,28 +150,29 @@ package Paws::Net::RestXmlCaller;
     my ($self, $value) = @_;
 
     my $xml = '';
-    foreach my $attribute ($value->meta->get_all_attributes) {
-      my $att_name = $attribute->name;
-      next if (not $attribute->has_value($value));
-      if (Moose::Util::find_meta($attribute->type_constraint->name)) {
-        if ($attribute->does('NameInRequest')) {
-          my $location = $attribute->request_name;
-          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($value)), $location;
+    foreach my $attribute (keys %{$value->params_map->{types} }) {
+#      my $att_name = $attribute->name;
+      next if (not $value->$attribute);
+      if ($value->params_map->{types}{$attribute}{type} eq 'ArrayRef[Str|Undef]') {
+        my $location = $value->params_map->{NameInRequest}{$attribute};
+        $xml .= "<${attribute}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $value->$attribute } ) . "</${attribute}>";
+      } elsif ($value->params_map->{types}{$attribute}{type} =~ m/^ArrayRef\[(.*?_.*)\]/) { #assume it's an array of Paws API objects
+        my $location = $value->params_map->{NameInRequest}{$attribute} || $attribute;
+        $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $value->$attribute } );
+      } elsif ($value->params_map->{types}{$attribute}{class}) {
+        # Moose::Util::find_meta($attribute->type_constraint->name)) {
+        if ($value->params_map->{NameInRequest}{$attribute}) {
+          my $location = $value->params_map->{NameInRequest}{$attribute};
+          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($value->$attribute), $location;
         } else {
-          $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
+          $xml .= sprintf '<%s>%s</%s>', $attribute, $self->_to_xml($value->$attribute), $attribute;
         }
-      } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
-          my $location = $attribute->request_name;
-          $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
-      } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
-        my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
-        $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
       } else {
-        if ($attribute->does('NameInRequest')) {
-          my $location = $attribute->request_name;
-          $xml .=  sprintf '<%s>%s</%s>', $location, $attribute->get_value($value), $location;
+        if ($value->params_map->{NameInRequest}{$attribute}) {
+          my $location = $value->params_map->{NameInRequest}{$attribute};
+          $xml .=  sprintf '<%s>%s</%s>', $location, $value->$attribute, $location;
         } else {
-          $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
+          $xml .= sprintf '<%s>%s</%s>', $attribute, $value->$attribute, $attribute;
         }
       }
     }
@@ -179,17 +183,19 @@ package Paws::Net::RestXmlCaller;
     my ($self, $call) = @_;
 
     my $xml = '';
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      if ($attribute->has_value($call) and 
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
-          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody') and 
-          not $attribute->type_constraint eq 'Paws::S3::Metadata'
+    my $params_map = $call->params_map;
+    foreach my $attribute (keys %{$params_map->{types} }) {
+      if( defined $call->$attribute and
+#      if ($attribute->has_value($call) and 
+          not $params_map->{ParamInHeader}{$attribute} and
+          not $params_map->{ParamInQuery}{$attribute}  and
+          not $params_map->{ParamInURI}{$attribute}    and
+          not $params_map->{ParamInBody}{$attribute}   and
+          not $params_map->{types}{$attribute}{class} && $params_map->{types}{$attribute}{class} eq 'Paws::S3::Metadata'
          ) {
-        my $attribute_value = $attribute->get_value($call);
+        my $attribute_value = $call->$attribute;
         if ( ref $attribute_value ) {
-          my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
+          my $location = $params_map->{NameInRequest}{$attribute} || $attribute;
           $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
         }
         else {
@@ -216,10 +222,10 @@ package Paws::Net::RestXmlCaller;
     my $uri = $self->_call_uri($call); #in RestXmlCaller
 
     my $qparams = { $uri->query_form };
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      my $att_name = $attribute->name;
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
-        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+    foreach my $attribute (keys %{$call->params_map->{types} }) {
+#      my $att_name = $attribute->name;
+      if ($call->params_map->{ParamInQuery}{$attribute}) {
+        $qparams->{ $call->params_map->{ParamInQuery}{$attribute} } = $call->$attribute if (defined $call->$attribute);
       }
     }
     $uri->query_form(%$qparams);

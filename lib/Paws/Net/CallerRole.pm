@@ -1,5 +1,5 @@
 package Paws::Net::CallerRole;
-  use Moose::Role;
+  use Moo::Role;
 
   requires 'do_call';
 1;

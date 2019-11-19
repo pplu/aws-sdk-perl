@@ -1,10 +1,11 @@
 package Paws::Net::APIResponse;
-  use Moose;
+  use Moo;
   use HTTP::Headers;
+  use Types::Standard qw/Int HashRef Str Undef/;
 
-  has status   => (is => 'rw', isa => 'Int', required => 1);
-  has headers  => (is => 'rw', isa => 'HashRef', required => 1);
-  has content  => (is => 'rw', isa => 'Str|Undef');
+  has status   => (is => 'rw', isa => Int, required => 1);
+  has headers  => (is => 'rw', isa => HashRef, required => 1);
+  has content  => (is => 'rw', isa => Str|Undef);
 
   sub header {
     my ($self, $header) = @_;

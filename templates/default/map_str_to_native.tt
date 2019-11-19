@@ -1,13 +1,30 @@
+# Generated from default/map_str_to_native.tt
+
 [%- -%]
 package [% inner_class %];
-  use Moose;
+  use Moo;
+  use Types::Standard qw/[% base_types.unique.join(' ') %]/;
   with 'Paws::API::StrToNativeMapParser';
+[%- SET k =  class_type_info.keys.first %]
+  use [% c.typelibrary_name %] qw/[% k %]/;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => '[% iclass.key.locationName || 'key' %]');
   class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
 
-  has Map => (is => 'ro', isa => '[% map_class %]');
+  has Map => (is => 'ro', isa => [% map_class %]);
+
+  sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => '[% map_class %]',
+                                          class => '[% class_type_info.$k %]',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
 1;
 
 [% INCLUDE 'map_str_to_whatever.tt' %]

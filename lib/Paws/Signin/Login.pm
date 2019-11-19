@@ -1,15 +1,26 @@
 package Paws::Signin::Login;
-  use Moose;
-  has Issuer => (is => 'ro', isa => 'Str', required => 1);
-  has Destination => (is => 'ro', isa => 'Str', required => 1);
-  has SigninToken => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  has Issuer => (is => 'ro', isa => Str, required => 1);
+  has Destination => (is => 'ro', isa => Str, required => 1);
+  has SigninToken => (is => 'ro', isa => Str, required => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/federation');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'login');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Signin::LoginResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/federation');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'login');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Signin::LoginResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+sub params_map {
+  our $Params_map ||= {
+    types => {
+      'Issuer' => { type => 'Str' },
+      'Destination' => { type => 'Str' },
+      'SigninToken' => { type => 'Str' },
+    }
+  };
+}
 1;
 
 ### main pod documentation begin ###

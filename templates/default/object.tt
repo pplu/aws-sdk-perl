@@ -1,19 +1,34 @@
+# Generated from default/object.tt
+
 [%- -%]
 package [% inner_class %];
-  use Moose;
-[% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- traits = [] -%]
-  [%- member_shape_name = shape.members.$param_name.shape %]
-  [%- member = c.shape(member_shape_name) -%]
-  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (member.type == 'list' and member.member.locationName.defined) %][% traits.push('NameInRequest') %], request_name => '[% member.member.locationName %]'[% END %]
-  [%- IF (shape.members.${param_name}.locationName); traits.push('NameInRequest') %], request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
-  [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
-  [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
-  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['NameInRequest'], request_name => '[% member.members.xmlname %]'[% END %]
-  [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+  use Moo;
+[%- attr_str = []; attr_types = []; attr_ind = 0; class_types = {}; params_hash = {}; -%]
+[% FOREACH param_name IN shape.members.keys.sort;
+  member_shape_name = shape.members.$param_name.shape;
+  member = c.shape(member_shape_name);
+  attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
+  IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; params_hash.IsRequired.$param_name = 1;  ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
+  CALL attr_types.import(member.base_types.keys);
+  params_hash.types.$param_name = { type => member.perl_type };
+  FOREACH k IN member.class_type_info.keys; class_types.$k = member.class_type_info.$k; params_hash.types.$param_name.class = member.class_type_info.$k; END;
+  IF (member.type == 'list' and member.member.locationName.defined); params_hash.NameInRequest.$param_name = member.member.locationName; END;
+  IF (shape.members.${param_name}.locationName); params_hash.NameInRequest.$param_name = shape.members.${param_name}.locationName; END;
+  IF (shape.members.$param_name.streaming == 1); params_hash.ParamInBody.push(param_name); END;
+  encoder = c.encoders_struct.$member_shape_name; IF (encoder);
+    PROCESS encoder_json_attributes.tt;
+    END;
+  IF (member.members.xmlname and (member.members.xmlname != 'item')); params_hash.NameInRequest.$param_name = member.members.xmlname; END;
+  SET attr_ind = attr_ind + 1;
+END; %]
+  use Types::Standard qw/[% attr_types.unique.join(" ") %]/;
+  use [% c.typelibrary_name %] qw/[% class_types.keys.join(" ") %]/;
+[% FOREACH attr IN attr_str -%]
+  [% attr %]
 [% END -%]
+
+  [% PROCESS params_map.tt %]
+
 1;
 
 [% iclass=shape; INCLUDE 'innerclass_documentation.tt' %]

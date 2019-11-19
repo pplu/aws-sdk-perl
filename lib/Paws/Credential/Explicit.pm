@@ -1,13 +1,13 @@
 package Paws::Credential::Explicit;
-  use Moose;
-
-  has access_key => (is => 'ro', isa => 'Str', required => 1);
-  has secret_key => (is => 'ro', isa => 'Str', required => 1);
-  has session_token => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  has access_key => (is => 'ro', isa => Str, required => 1);
+  has secret_key => (is => 'ro', isa => Str, required => 1);
+  has session_token => (is => 'ro', isa => Str);
 
   with 'Paws::Credential';
 
-  no Moose;
+  no Moo;
 1;
 ### main pod documentation begin ###
 

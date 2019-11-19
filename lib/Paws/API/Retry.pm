@@ -1,9 +1,11 @@
 package Paws::API::Retry;
-  use Moose;
-  use MooseX::ClassAttribute;
-  use Paws::Exception;  
+  use Moo;
+  use MooX::ClassAttribute;
+  use Paws::Exception;
 
-  class_has default_rules => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  use Types::Standard qw/ArrayRef/;
+
+  class_has default_rules => (is => 'ro', isa => ArrayRef, default => sub { [
     #general_socket_errors
     sub { $_[0]->code eq 'ConnectionError' },
     #general_server_error
@@ -97,6 +99,6 @@ package Paws::API::Retry;
     return 1;
   }
   
-  __PACKAGE__->meta->make_immutable;
+#  __PACKAGE__->meta->make_immutable;
   
 1;

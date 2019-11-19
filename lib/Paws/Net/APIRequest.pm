@@ -1,14 +1,16 @@
 package Paws::Net::APIRequest;
-  use Moose;
+  use Moo;
   use HTTP::Headers;
   use URI;
 
-  has parameters => (is => 'rw', isa => 'HashRef', default => sub { {} });
-  has headers    => (is => 'rw', isa => 'HTTP::Headers', default => sub { HTTP::Headers->new });
-  has content    => (is => 'rw', isa => 'Str', default => '');
-  has method     => (is => 'rw', isa => 'Str');
-  has uri        => (is => 'rw', isa => 'Str');
-  has url        => (is => 'rw', isa => 'Str');
+  use Types::Standard qw/HashRef Str InstanceOf/;
+
+  has parameters => (is => 'rw', isa => HashRef, default => sub { {} });
+  has headers    => (is => 'lazy', isa => InstanceOf['HTTP::Headers'], default => sub { HTTP::Headers->new });
+  has content    => (is => 'rw', isa => Str, default => '');
+  has method     => (is => 'rw', isa => Str);
+  has uri        => (is => 'rw', isa => Str);
+  has url        => (is => 'rw', isa => Str);
 
   sub header {
     my ($self, $header, $value) = @_;

@@ -65,7 +65,7 @@ foreach my $file (@files) {
       $builder->write_documentation_file if ($gen_docu_links);
       $builder->process_api if ($gen_classes);
     };
-    if ($@) { warn $@; push @failures, "$file $@\n" }
+    if ($@) { push @failures, "$file $@\n"; warn $@;  }
   }
 }
 

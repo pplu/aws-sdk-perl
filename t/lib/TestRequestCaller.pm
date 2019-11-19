@@ -1,10 +1,9 @@
 package TestRequestCaller;
-  use Moose;
+  use Moo;
   with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
 
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
-  use Moose::Util::TypeConstraints;
   use Path::Tiny;
 
   has request_obj => (

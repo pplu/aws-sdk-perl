@@ -1,6 +1,16 @@
 package Paws::Signin::LoginResponse;
-  use Moose;
-  has URL => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+
+  has URL => (is => 'ro', isa => Str, required => 1);
+
+sub params_map {
+  our $Params_map ||= {
+    types => {
+      'URL' => { type => 'Str' },
+    }
+  };
+}
 1;
 
 ### main pod documentation begin ###

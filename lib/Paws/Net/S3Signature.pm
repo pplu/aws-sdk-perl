@@ -1,5 +1,5 @@
 package Paws::Net::S3Signature;
-  use Moose::Role;
+  use Moo::Role;
   requires 'service';
 
   sub BUILD {

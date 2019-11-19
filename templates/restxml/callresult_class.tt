@@ -3,27 +3,42 @@
 [%- op_name = c.shapename_for_operation_output(op_name) %]
 [%- IF (shape) %]
 package [% c.api %]::[% op_name %];
-  use Moose;
-[% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
-  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
-  [%- IF (shape.members.$param_name.locationName) %]
-    [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]'
-    [%- ELSIF (shape.members.$param_name.location == 'headers') %], traits => ['ParamInHeaders'], header_prefix => '[% shape.members.$param_name.locationName %]'
-    [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
-    [%- ELSIF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName -%]' 
-    [%- ELSE %], traits => ['NameInRequest'], request_name => '[% shape.members.$param_name.locationName %]'[%- END -%][%- END -%]
-  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
-  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
-[% END %]
-  [%- IF (stream_param or shape.payload == param_name) %]
-  use MooseX::ClassAttribute;
+  use Moo;
+[%- attr_str = []; attr_types = ['Str']; attr_ind = 0; class_types = {}; params_hash = { 'types' => { '_request_id' => { 'type' => 'Str' } } }; -%]
+[% FOREACH param_name IN shape.members.keys.sort;
+  member = c.shape(shape.members.$param_name.shape);
+  attr_str.$attr_ind = "has $param_name => (is => 'ro', isa => ${member.perl_type}";
+  IF (c.required_in_shape(shape,param_name)); attr_str.$attr_ind = attr_str.$attr_ind _ ", required => 1);"; params_hash.IsRequired.$param_name = 1; ELSE; attr_str.$attr_ind = attr_str.$attr_ind _ ");"; END;
+  IF (shape.members.$param_name.locationName);
+    IF (shape.members.$param_name.location == 'header'); params_hash.ParamInHeader.$param_name = shape.members.$param_name.locationName;
+    ELSIF (shape.members.$param_name.location == 'headers'); params_hash.ParamInHeaders.$param_name = shape.members.$param_name.locationName;
+    ELSIF (shape.members.$param_name.location == 'querystring'); params_hash.ParamInQuery.$param_name = shape.members.$param_name.locationName;
+    ELSIF (shape.members.$param_name.location == 'uri'); params_hash.ParamInURI.$param_name = shape.members.$param_name.locationName;
+    ELSE; params_hash.NameInRequest.$param_name = shape.members.$param_name.locationName;
+    END;
+  END;
+  IF (shape.members.$param_name.streaming == 1); stream_param = param_name; params_hash.ParamInBody.push(param_name); END;
+  CALL attr_types.import(member.base_types.keys);
+  params_hash.types.$param_name = { type => member.perl_type };
+  FOREACH k IN member.class_type_info.keys; class_types.$k = member.class_type_info.$k; params_hash.types.$param_name.class = member.class_type_info.$k; END;
+  SET attr_ind = attr_ind + 1;
+END; %]
+
+  use Types::Standard qw/[% attr_types.unique.join(" ") %]/;
+  use [% c.typelibrary_name %] qw/[% class_types.keys.join(" ") %]/;
+[% FOREACH attr IN attr_str -%]
+  [% attr %]
+[% END -%]
+
+[%- IF (stream_param or shape.payload == param_name) %]
+  use MooX::ClassAttribute;
   [%- IF (stream_param) %]
   class_has _stream_param => (is => 'ro', default => '[% c.to_payload_shape_name(stream_param) %]');[% END %]
   [%- IF (shape.payload == param_name) %]
   class_has _payload => (is => 'ro', default => '[% param_name %]');[% END %]
-  [%- END %]
-  has _request_id => (is => 'ro', isa => 'Str');
+[%- END %]
+  has _request_id => (is => 'ro', isa => Str);
+  [% PROCESS params_map.tt %]
 [%- END %]
 1;
 

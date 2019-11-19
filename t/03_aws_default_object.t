@@ -3,13 +3,13 @@
 use lib 't/lib';
 
 package A::NEW::CALLER_2;
-  use Moose;
+  use Moo;
   with 'Paws::Net::CallerRole';
   sub do_call { 'CALLER2' }
   sub caller_to_response {} 
 
 package A::NEW::CALLER_3;
-  use Moose;
+  use Moo;
   with 'Paws::Net::CallerRole';
   sub do_call { 'CALLER3' }
   sub caller_to_response {} 

@@ -3,7 +3,7 @@
 #
 
 package TestGivenResponse;
-  use Moose;
+  use Moo;
   use Carp qw(croak);
 
   with 'Paws::Net::CallerRole';
@@ -36,7 +36,6 @@ package TestGivenResponse;
     }
   }
 
-  no Moose;
+  no Moo;
 
-  __PACKAGE__->meta->make_immutable;
 1;

@@ -1,9 +1,10 @@
 package Paws::Net::RestXMLResponse;
-  use Moose;
+  use Moo;
   use XML::Simple qw//;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
+  use feature 'state';
 
   sub unserialize_response {
     my ($self, $data) = @_;
@@ -128,19 +129,21 @@ package Paws::Net::RestXMLResponse;
     my ($self, $class, $result) = @_;
     my %args;
     
-    if ($class->does('Paws::API::StrToObjMapParser')) {
+    my $params_map = $class->params_map;
+    if (do { state %d; $d{$class} //= $class->does('Paws::API::StrToObjMapParser')}) {
       return $self->handle_response_strtoobjmap($class, $result);
-    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+    } elsif (do { state %d; $d{$class} //= $class->does('Paws::API::StrToNativeMapParser')}) {
       return $self->handle_response_strtonativemap($class, $result);
     } else {
-    foreach my $att ($class->meta->get_attribute_list) {
-      next if (not my $meta = $class->meta->get_attribute($att));
+    foreach my $att (keys %{$params_map->{types}}) {
+      #next if (not my $meta = $class->meta->get_attribute($att));
 
-      my $key = $meta->does('NameInRequest') ? $meta->request_name :
-                $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
+      my $key = $params_map->{NameInRequest}{$att} ||
+          ($params_map->{ParamInHeader}{$att}
+           ? lc($params_map->{ParamInHeader}{$att}) : $att);
 
-      my $att_type = $meta->type_constraint;
-      my $att_is_required = $meta->is_required;
+      my $att_type = $params_map->{types}{$att}{type};
+      my $att_is_required = $params_map->{IsRequired}{$att};
 
     #  use Data::Dumper;
     #  print STDERR "USING KEY:  $key\n";
@@ -150,34 +153,33 @@ package Paws::Net::RestXMLResponse;
     #  print STDERR "RESULT >>> $extracted_val\n";
 
       # Free-form paramaters passed in the HTTP headers
-      if ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
-        Paws->load_class("$att_type");
-        my $att_class        = $att_type->class;
-        my $header_prefix    = $meta->header_prefix;
+      my $inner_class = $params_map->{types}{$att}{class};
+      if ($params_map->{ParamInHeaders}{$att}) { 
+        Paws->load_class($inner_class);
+        my $header_prefix    = $params_map->{ParamInHeaders}{$att};
         my @metadata_headers = map { my ($h, $nometa) = ($_, $_); $nometa =~ s/^$header_prefix//; [ $h, $nometa ] } grep /^$header_prefix/, keys %{$result};
-        $args{ $att }        = $att_class->new( Map => { map { $_->[1] => $result->{$_->[0]} } @metadata_headers } ); 
+        $args{ $att }        = $inner_class->new( Map => { map { $_->[1] => $result->{$_->[0]} } @metadata_headers } ); 
       }
       # We'll consider that an attribute without brackets [] isn't an array type
       elsif ($att_type !~ m/\[.*\]$/) {
         my $value = $result->{ $key };
         my $value_ref = ref($value);
 
-        if ($att_type =~ m/\:\:/) {
+        if ($inner_class && $inner_class =~ m/\:\:/) {
           # Make the att_type stringify for module loading
-          Paws->load_class("$att_type");
+          Paws->load_class($inner_class);
           if (defined $value) {
             if (not $value_ref) {
               $args{ $att } = $value;
             } else {
-              my $att_class = $att_type->class;
 
-              if ($att_class->does('Paws::API::StrToObjMapParser')) {
-                $args{ $att } = $self->handle_response_strtoobjmap($att_class, $value);
-              } elsif ($att_class->does('Paws::API::StrToNativeMapParser')) {
-                $args{ $att } = $self->handle_response_strtonativemap($att_class, $value);
-              } elsif ($att_class->does('Paws::API::MapParser')) {
-                my $xml_keys = $att_class->xml_keys;
-                my $xml_values = $att_class->xml_values;
+              if (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToObjMapParser')}) {
+                $args{ $att } = $self->handle_response_strtoobjmap($inner_class, $value);
+              } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToNativeMapParser')}) {
+                $args{ $att } = $self->handle_response_strtonativemap($inner_class, $value);
+              } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::MapParser')}) {
+                my $xml_keys = $inner_class->xml_keys;
+                my $xml_values = $inner_class->xml_values;
 
                 #TODO: handle in one place
                 if ($value_ref eq 'HASH') {
@@ -195,9 +197,9 @@ package Paws::Net::RestXMLResponse;
                 }
 
 
-                $args{ $att } = $att_class->new(map { ($_->{ $xml_keys } => $_->{ $xml_values }) } @$value);
+                $args{ $att } = $inner_class->new(map { ($_->{ $xml_keys } => $_->{ $xml_values }) } @$value);
               } else {
-                $args{ $att } = $self->new_from_result_struct($att_class, $value);
+                $args{ $att } = $self->new_from_result_struct($inner_class, $value);
               }
             }
           } else {
@@ -206,9 +208,8 @@ package Paws::Net::RestXMLResponse;
               # the root node is removed from the response when unserialising (see KeepRoot => 1 for 
               # XML::Simple) but is required to create the Paws object. This is mostly due to the 
               # implementation of the new_from_result_struct sub 
-              my $att_class = $att_type->class;
               eval {
-                $args{ $att } = $self->new_from_result_struct($att_class, $result);
+                $args{ $att } = $self->new_from_result_struct($inner_class, $result);
                 1;
               } or do {}
           }
@@ -247,8 +248,8 @@ package Paws::Net::RestXMLResponse;
           $value_ref = ref($value);
         }
  
-        if ($type =~ m/\:\:/) {
-          Paws->load_class($type);
+        if ($inner_class && $inner_class =~ m/\:\:/) {
+          Paws->load_class($inner_class);
 
           my $val;
           if (not defined $value) {
@@ -259,14 +260,14 @@ package Paws::Net::RestXMLResponse;
             $val = [ $value ];
           }
 
-          if ($type->does('Paws::API::StrToObjMapParser')) {
-            $args{ $att } = [ map { $self->handle_response_strtoobjmap($type, $_) } @$val ];
-          } elsif ($type->does('Paws::API::StrToNativeMapParser')) {
-            $args{ $att } = [ map { $self->handle_response_strtonativemap($type, $_) } @$val ];
-          } elsif ($type->does('Paws::API::MapParser')) {
+          if (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToObjMapParser')}) {
+            $args{ $att } = [ map { $self->handle_response_strtoobjmap($inner_class, $_) } @$val ];
+          } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::StrToNativeMapParser')}) {
+            $args{ $att } = [ map { $self->handle_response_strtonativemap($inner_class, $_) } @$val ];
+          } elsif (do { state %d; $d{$inner_class} //= $inner_class->does('Paws::API::MapParser')}) {
             die "MapParser Type in an Array. Please implement me";
           } else {
-            $args{ $att } = [ map { $self->new_from_result_struct($type, $_) } @$val ];
+            $args{ $att } = [ map { $self->new_from_result_struct($inner_class, $_) } @$val ];
           }
         } else {
           if (defined $value){
@@ -289,7 +290,7 @@ package Paws::Net::RestXMLResponse;
     my ($self, $call_object, $response) = @_;
     my ($http_status, $content, $headers) = ($response->status, $response->content, $response->headers);;
 
-    $call_object = $call_object->meta->name;
+#    $call_object = $call_object->meta->name;
 
     my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
     my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';

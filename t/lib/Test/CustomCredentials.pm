@@ -1,5 +1,5 @@
 package Test::CustomCredentials;
-  use Moose;
+  use Moo;
   use Paws::Credential;
   with 'Paws::Credential';
 

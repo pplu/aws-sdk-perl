@@ -1,5 +1,5 @@
 package Paws::Net::SigninCaller;
-  use Moose::Role;
+  use Moo::Role;
   use JSON::MaybeXS;
   use URI::Template;
 
@@ -14,7 +14,7 @@ package Paws::Net::SigninCaller;
 
   sub _call_uri {
     my ($self, $call, $qparams) = @_;
-    my $uri_template = $call->meta->name->_api_uri;
+    my $uri_template = $call->_api_uri;
     my $t = URI::Template->new( $uri_template );
 
     my $uri = $t->process({});

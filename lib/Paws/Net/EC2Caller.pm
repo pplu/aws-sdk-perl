@@ -1,6 +1,6 @@
 package Paws::Net::EC2Caller;
   use Paws;
-  use Moose::Role;
+  use Moo::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
 
@@ -22,19 +22,15 @@ package Paws::Net::EC2Caller;
   sub _to_querycaller_params {
     my ($self, $params) = @_;
     my %p;
-    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key;
-      if ($params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::NameInRequest')){
-        $key = $params->meta->get_attribute($att)->request_name;
-      } else {
-        $key = $att;
-      }
+    my $params_hash = $params->params_map;
+    foreach my $att (keys %{$params_hash->{types}}) {
+      my $key = $params_hash->{NameInRequest} && $params_hash->{NameInRequest}{$att} || $att;
       
       # This is due to code found in serialize.py (EC2Serializer)
       substr($key,0,1) = uc(substr($key,0,1));
 
       if (defined $params->$att) {
-        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        my $att_type = $params_hash->{types}{$att}{type};
 
         if (Paws->is_internal_type($att_type)) {
           if ($att_type eq 'Bool') {
