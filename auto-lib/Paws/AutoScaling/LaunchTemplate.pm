@@ -38,6 +38,12 @@ The overrides are used to override the instance type specified by the
 launch template with multiple instance types that can be used to launch
 On-Demand Instances and Spot Instances.
 
+When you update the launch template or overrides, existing Amazon EC2
+instances continue to run. When scale out occurs, Amazon EC2 Auto
+Scaling launches instances to match the new settings. When scale in
+occurs, Amazon EC2 Auto Scaling terminates instances according to the
+group's termination policies.
+
 =head1 ATTRIBUTES
 
 
@@ -49,9 +55,10 @@ ID or launch template name in the request.
 
 =head2 Overrides => ArrayRef[L<Paws::AutoScaling::LaunchTemplateOverrides>]
 
-  Any parameters that you specify override the same parameters in the
-launch template. Currently, the only supported override is instance
-type. You must specify between 2 and 20 overrides.
+  An optional setting. Any parameters that you specify override the same
+parameters in the launch template. Currently, the only supported
+override is instance type. You can specify between 1 and 20 instance
+types.
 
 
 

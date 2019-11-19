@@ -9,6 +9,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has HealthCheckType => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
+  has MaxInstanceLifetime => (is => 'ro', isa => 'Int');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
   has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
@@ -139,12 +140,6 @@ The name of the launch configuration. If you specify
 C<LaunchConfigurationName> in your update request, you can't specify
 C<LaunchTemplate> or C<MixedInstancesPolicy>.
 
-To update an Auto Scaling group with a launch configuration with
-C<InstanceMonitoring> set to C<false>, you must first disable the
-collection of group metrics. Otherwise, you get an error. If you have
-previously enabled the collection of group metrics, you can disable it
-using DisableMetricsCollection.
-
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
@@ -156,6 +151,15 @@ C<LaunchConfigurationName> or C<MixedInstancesPolicy>.
 For more information, see LaunchTemplateSpecification
 (https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html)
 in the I<Amazon EC2 Auto Scaling API Reference>.
+
+
+
+=head2 MaxInstanceLifetime => Int
+
+The maximum amount of time, in seconds, that an instance can be in
+service.
+
+Valid Range: Minimum value of 604800.
 
 
 

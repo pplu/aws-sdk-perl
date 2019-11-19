@@ -13,6 +13,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has MaxInstanceLifetime => (is => 'ro', isa => 'Int');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
   has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
@@ -129,6 +130,14 @@ status checks or the load balancer health checks.
 =head2 LoadBalancerNames => ArrayRef[Str|Undef]
 
   One or more load balancers associated with the group.
+
+
+=head2 MaxInstanceLifetime => Int
+
+  The maximum amount of time, in seconds, that an instance can be in
+service.
+
+Valid Range: Minimum value of 604800.
 
 
 =head2 B<REQUIRED> MaxSize => Int

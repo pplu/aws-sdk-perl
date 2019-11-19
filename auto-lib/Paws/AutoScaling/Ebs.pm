@@ -125,7 +125,7 @@ see Amazon EBS Volume Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
-Valid values: C<standard> | C<io1> | C<gp2> | C<st1> | C<sc1>
+Valid Values: C<standard> | C<io1> | C<gp2> | C<st1> | C<sc1>
 
 
 

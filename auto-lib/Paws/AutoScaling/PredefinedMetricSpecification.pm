@@ -40,13 +40,7 @@ use with Amazon EC2 Auto Scaling.
 
 =head2 B<REQUIRED> PredefinedMetricType => Str
 
-  The metric type.
-
-
-=head2 ResourceLabel => Str
-
-  Identifies the resource associated with the metric type. The following
-predefined metrics are available:
+  The metric type. The following predefined metrics are available:
 
 =over
 
@@ -72,18 +66,33 @@ in an Application Load Balancer target group.
 
 =back
 
-For predefined metric types C<ASGAverageCPUUtilization>,
-C<ASGAverageNetworkIn>, and C<ASGAverageNetworkOut>, the parameter must
-not be specified as the resource associated with the metric type is the
-Auto Scaling group. For predefined metric type
-C<ALBRequestCountPerTarget>, the parameter must be specified in the
-format:
+
+
+=head2 ResourceLabel => Str
+
+  Identifies the resource associated with the metric type. You can't
+specify a resource label unless the metric type is
+C<ALBRequestCountPerTarget> and there is a target group attached to the
+Auto Scaling group.
+
+The format is
 C<app/I<load-balancer-name>/I<load-balancer-id>/targetgroup/I<target-group-name>/I<target-group-id>
->, where C<app/I<load-balancer-name>/I<load-balancer-id> > is the final
-portion of the load balancer ARN, and
+>, where
+
+=over
+
+=item *
+
+C<app/I<load-balancer-name>/I<load-balancer-id> > is the final portion
+of the load balancer ARN, and
+
+=item *
+
 C<targetgroup/I<target-group-name>/I<target-group-id> > is the final
-portion of the target group ARN. The target group must be attached to
-the Auto Scaling group.
+portion of the target group ARN.
+
+=back
+
 
 
 

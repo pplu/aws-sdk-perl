@@ -44,6 +44,15 @@ Instances and Spot Instances, the maximum price to pay for Spot
 Instances, and how the Auto Scaling group allocates instance types to
 fulfill On-Demand and Spot capacity.
 
+When you update C<SpotAllocationStrategy>, C<SpotInstancePools>, or
+C<SpotMaxPrice>, this update action does not deploy any changes across
+the running Amazon EC2 instances in the group. Your existing Spot
+Instances continue to run as long as the maximum price for those
+instances is higher than the current Spot price. When scale out occurs,
+Amazon EC2 Auto Scaling launches instances based on the new settings.
+When scale in occurs, Amazon EC2 Auto Scaling terminates instances
+according to the group's termination policies.
+
 =head1 ATTRIBUTES
 
 
@@ -66,21 +75,30 @@ capacity using the second priority instance type, and so on.
 fulfilled by On-Demand Instances. This base portion is provisioned
 first as your group scales.
 
-The default value is C<0>. If you leave this parameter set to C<0>,
-On-Demand Instances are launched as a percentage of the Auto Scaling
-group's desired capacity, per the
-C<OnDemandPercentageAboveBaseCapacity> setting.
+Default if not set is 0. If you leave it set to 0, On-Demand Instances
+are launched as a percentage of the Auto Scaling group's desired
+capacity, per the C<OnDemandPercentageAboveBaseCapacity> setting.
+
+An update to this setting means a gradual replacement of instances to
+maintain the specified number of On-Demand Instances for your base
+capacity. When replacing instances, Amazon EC2 Auto Scaling launches
+new instances before terminating the old ones.
 
 
 =head2 OnDemandPercentageAboveBaseCapacity => Int
 
   Controls the percentages of On-Demand Instances and Spot Instances for
-your additional capacity beyond C<OnDemandBaseCapacity>. The range is
-0E<ndash>100.
+your additional capacity beyond C<OnDemandBaseCapacity>.
 
-The default value is C<100>. If you leave this parameter set to C<100>,
-the percentages are 100% for On-Demand Instances and 0% for Spot
-Instances.
+Default if not set is 100. If you leave it set to 100, the percentages
+are 100% for On-Demand Instances and 0% for Spot Instances.
+
+An update to this setting means a gradual replacement of instances to
+maintain the percentage of On-Demand Instances for your additional
+capacity above the base capacity. When replacing instances, Amazon EC2
+Auto Scaling launches new instances before terminating the old ones.
+
+Valid Range: Minimum value of 0. Maximum value of 100.
 
 
 =head2 SpotAllocationStrategy => Str
@@ -106,10 +124,12 @@ Valid values: C<lowest-price> | C<capacity-optimized>
 
   The number of Spot Instance pools across which to allocate your Spot
 Instances. The Spot pools are determined from the different instance
-types in the Overrides array of LaunchTemplate. The range is
-1E<ndash>20. The default value is C<2>.
+types in the Overrides array of LaunchTemplate. Default if not set is
+2.
 
-Valid only when the Spot allocation strategy is C<lowest-price>.
+Used only when the Spot allocation strategy is C<lowest-price>.
+
+Valid Range: Minimum value of 1. Maximum value of 20.
 
 
 =head2 SpotMaxPrice => Str

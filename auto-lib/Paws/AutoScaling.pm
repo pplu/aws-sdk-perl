@@ -789,6 +789,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [LoadBalancerNames => ArrayRef[Str|Undef]]
 
+=item [MaxInstanceLifetime => Int]
+
 =item [MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>]
 
 =item [NewInstancesProtectedFromScaleIn => Bool]
@@ -1597,6 +1599,15 @@ Returns: a L<Paws::AutoScaling::EnterStandbyAnswer> instance
 
 Moves the specified instances into the standby state.
 
+If you choose to decrement the desired capacity of the Auto Scaling
+group, the instances can enter standby as long as the desired capacity
+of the Auto Scaling group after the instances are placed into standby
+is equal to or greater than the minimum capacity of the group.
+
+If you choose not to decrement the desired capacity of the Auto Scaling
+group, the Auto Scaling group launches new instances to replace the
+instances on standby.
+
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
@@ -1643,6 +1654,9 @@ Each argument is described in detail in: L<Paws::AutoScaling::ExitStandby>
 Returns: a L<Paws::AutoScaling::ExitStandbyAnswer> instance
 
 Moves the specified instances out of the standby state.
+
+After you put the instances back in service, the desired capacity is
+incremented.
 
 For more information, see Temporarily Removing Instances from Your Auto
 Scaling Group
@@ -2075,6 +2089,8 @@ terminated immediately.
 
 =item [LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>]
 
+=item [MaxInstanceLifetime => Int]
+
 =item [MaxSize => Int]
 
 =item [MinSize => Int]
@@ -2103,8 +2119,7 @@ Updates the configuration for the specified Auto Scaling group.
 To update an Auto Scaling group, specify the name of the group and the
 parameter that you want to change. Any parameters that you don't
 specify are not changed by this update request. The new settings take
-effect on any scaling activities after this call returns. Scaling
-activities that are currently in progress aren't affected.
+effect on any scaling activities after this call returns.
 
 If you associate a new launch configuration or template with an Auto
 Scaling group, all new instances will get the updated configuration.

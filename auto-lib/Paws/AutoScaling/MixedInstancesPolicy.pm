@@ -53,8 +53,8 @@ CreateAutoScalingGroup and UpdateAutoScalingGroup.
 
   The instances distribution to use.
 
-If you leave this parameter unspecified when creating a mixed instances
-policy, the default values are used.
+If you leave this parameter unspecified, the value for each parameter
+in C<InstancesDistribution> uses a default value.
 
 
 =head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplate>

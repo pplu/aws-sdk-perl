@@ -12,6 +12,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
   has LifecycleHookSpecificationList => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LifecycleHookSpecification]');
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has MaxInstanceLifetime => (is => 'ro', isa => 'Int');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
   has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
@@ -224,6 +225,15 @@ For more information, see Using a Load Balancer with an Auto Scaling
 Group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+
+=head2 MaxInstanceLifetime => Int
+
+The maximum amount of time, in seconds, that an instance can be in
+service.
+
+Valid Range: Minimum value of 604800.
 
 
 

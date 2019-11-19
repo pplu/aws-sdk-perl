@@ -252,7 +252,7 @@ For more information, see Instance Placement Tenancy
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
-Valid values: C<default> | C<dedicated>
+Valid Values: C<default> | C<dedicated>
 
 
 
@@ -283,18 +283,15 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
-specify exceeds the current Spot market price. For more information,
-see Launching Spot Instances in Your Auto Scaling Group
+specify exceeds the current Spot price. For more information, see
+Launching Spot Instances in Your Auto Scaling Group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
-If a Spot price is set, then the Auto Scaling group will only launch
-instances when the Spot price has been met, regardless of the setting
-in the Auto Scaling group's C<DesiredCapacity>.
-
-When you change your Spot price by creating a new launch configuration,
-running instances will continue to run as long as the Spot price for
-those running instances is higher than the current Spot market price.
+When you change your maximum price by creating a new launch
+configuration, running instances will continue to run as long as the
+maximum price for those running instances is higher than the current
+Spot price.
 
 
 

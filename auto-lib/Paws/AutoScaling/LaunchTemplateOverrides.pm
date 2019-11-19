@@ -1,6 +1,7 @@
 package Paws::AutoScaling::LaunchTemplateOverrides;
   use Moose;
   has InstanceType => (is => 'ro', isa => 'Str');
+  has WeightedCapacity => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::LaunchTemplateOverrides object:
 
-  $service_obj->Method(Att1 => { InstanceType => $value, ..., InstanceType => $value  });
+  $service_obj->Method(Att1 => { InstanceType => $value, ..., WeightedCapacity => $value  });
 
 =head3 Results returned from an API call
 
@@ -44,6 +45,18 @@ For information about available instance types, see Available Instance
 Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
 in the I<Amazon Elastic Compute Cloud User Guide.>
+
+
+=head2 WeightedCapacity => Str
+
+  The number of capacity units, which gives the instance type a
+proportional weight to other instance types. For example, larger
+instance types are generally weighted more than smaller instance types.
+These are the same units that you chose to set the desired capacity in
+terms of instances, or a performance attribute such as vCPUs, memory,
+or I/O.
+
+Valid Range: Minimum value of 1. Maximum value of 999.
 
 
 
