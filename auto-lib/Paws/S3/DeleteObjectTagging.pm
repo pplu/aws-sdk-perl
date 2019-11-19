@@ -51,13 +51,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket containing the objects from which to remove the tags.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Name of the tag.
 
 
 

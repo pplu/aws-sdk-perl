@@ -38,14 +38,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ObjectV
 
 =head1 DESCRIPTION
 
-This class has no description
+The version of an object.
 
 =head1 ATTRIBUTES
 
 
 =head2 ETag => Str
 
-  
+  The entity tag is an MD5 hash of that version of the object
 
 
 =head2 IsLatest => Bool
@@ -66,7 +66,7 @@ version of an object.
 
 =head2 Owner => L<Paws::S3::Owner>
 
-  
+  Specifies the Owner of the object.
 
 
 =head2 Size => Int

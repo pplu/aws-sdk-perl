@@ -59,20 +59,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name of the bucket containing the object.
 
 
 
 =head2 BypassGovernanceRetention => Bool
 
-Indicates whether Amazon S3 object lock should bypass governance-mode
+Indicates whether S3 Object Lock should bypass Governance-mode
 restrictions to process this operation.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Key name of the object to delete.
 
 
 
@@ -80,6 +80,8 @@ restrictions to process this operation.
 
 The concatenation of the authentication device's serial number, a
 space, and the value that is displayed on your authentication device.
+Required to permanently delete a versionedobject if versioning is
+configured with MFA Deleteenabled.
 
 
 

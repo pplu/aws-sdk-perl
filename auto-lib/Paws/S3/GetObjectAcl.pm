@@ -55,13 +55,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name of the object for which to get the ACL information.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+The key of the object for which to get the ACL information.
 
 
 

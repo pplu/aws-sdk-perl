@@ -113,7 +113,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name containing the object.
 
 
 
@@ -147,7 +147,7 @@ time, otherwise return a 412 (precondition failed).
 
 =head2 B<REQUIRED> Key => Str
 
-
+Key of the object to get.
 
 
 

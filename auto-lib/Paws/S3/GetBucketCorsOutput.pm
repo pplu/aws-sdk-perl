@@ -17,7 +17,8 @@ Paws::S3::GetBucketCorsOutput
 
 =head2 CORSRules => ArrayRef[L<Paws::S3::CORSRule>]
 
-
+A set of origins and methods (cross-origin access that you want to
+allow). You can add up to 100 rules to the configuration.
 
 
 

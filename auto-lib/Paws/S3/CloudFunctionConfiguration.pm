@@ -35,14 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CloudFu
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for specifying the AWS Lambda notification configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 CloudFunction => Str
 
-  
+  Lambda cloud function ARN that Amazon S3 can invoke when it detects
+events of the specified type.
 
 
 =head2 Event => Str
@@ -52,7 +53,7 @@ This class has no description
 
 =head2 Events => ArrayRef[Str|Undef]
 
-  
+  Bucket events for which to send notifications.
 
 
 =head2 Id => Str
@@ -62,7 +63,7 @@ This class has no description
 
 =head2 InvocationRole => Str
 
-  
+  The role supporting the invocation of the lambda function
 
 
 

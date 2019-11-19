@@ -57,6 +57,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             DeleteMarkerReplication => {
               Status => 'Enabled',    # values: Enabled, Disabled; OPTIONAL
             },    # OPTIONAL
+            ExistingObjectReplication => {
+              Status => 'Enabled',    # values: Enabled, Disabled
+
+            },    # OPTIONAL
             Filter => {
               And => {
                 Prefix => 'MyPrefix',    # OPTIONAL
@@ -66,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Value => 'MyValue',
 
                   },
-                  ...                          # OPTIONAL
+                  ...
                 ],                             # OPTIONAL
               },    # OPTIONAL
               Prefix => 'MyPrefix',    # OPTIONAL
@@ -74,7 +78,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Key   => 'MyObjectKey',    # min: 1
                 Value => 'MyValue',
 
-              },    # OPTIONAL
+              },
             },    # OPTIONAL
             ID                      => 'MyID',        # OPTIONAL
             Prefix                  => 'MyPrefix',    # OPTIONAL
@@ -103,7 +107,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket
 
 
 
@@ -117,7 +121,8 @@ Size of the body in bytes.
 
 The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit.
+not corrupted in transit. For more information, see RFC 1864
+(http://www.ietf.org/rfc/rfc1864.txt).
 
 
 
@@ -129,8 +134,7 @@ not corrupted in transit.
 
 =head2 Token => Str
 
-A token that allows Amazon S3 object lock to be enabled for an existing
-bucket.
+
 
 
 

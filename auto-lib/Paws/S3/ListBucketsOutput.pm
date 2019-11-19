@@ -18,13 +18,13 @@ Paws::S3::ListBucketsOutput
 
 =head2 Buckets => ArrayRef[L<Paws::S3::Bucket>]
 
-
+The list of buckets owned by the requestor.
 
 
 
 =head2 Owner => L<Paws::S3::Owner>
 
-
+The owner of the buckets listed.
 
 
 

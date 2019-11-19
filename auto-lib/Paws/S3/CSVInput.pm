@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CSVInpu
 
 =head1 DESCRIPTION
 
-Describes how a CSV-formatted input object is formatted.
+Describes how a uncompressed comma-separated values (CSV)-formatted
+input object is formatted.
 
 =head1 ATTRIBUTES
 
@@ -51,34 +52,67 @@ this value to TRUE may lower performance.
 
 =head2 Comments => Str
 
-  The single character used to indicate a row should be ignored when
-present at the start of a row.
+  A single character used to indicate that a row should be ignored when
+the character is present at the start of that row. You can specify any
+character to indicate a comment line.
 
 
 =head2 FieldDelimiter => Str
 
-  The value used to separate individual fields in a record.
+  A single character used to separate individual fields in a record. You
+can specify an arbitrary delimiter.
 
 
 =head2 FileHeaderInfo => Str
 
-  Describes the first line of input. Valid values: None, Ignore, Use.
+  Describes the first line of input. Valid values are:
+
+=over
+
+=item *
+
+C<NONE>: First line is not a header.
+
+=item *
+
+C<IGNORE>: First line is a header, but you can't use the header values
+to indicate the column in an expression. You can use column position
+(such as _1, _2, E<hellip>) to indicate the column (C<SELECT s._1 FROM
+OBJECT s>).
+
+=item *
+
+C<Use>: First line is a header, and you can use the header value to
+identify a column in an expression (C<SELECT "name" FROM OBJECT>).
+
+=back
+
 
 
 =head2 QuoteCharacter => Str
 
-  Value used for escaping where the field delimiter is part of the value.
+  A single character used for escaping when the field delimiter is part
+of the value. For example, if the value is C<a, b>, Amazon S3 wraps
+this field value in quotation marks, as follows: C<" a , b ">.
+
+Type: String
+
+Default: C<">
+
+Ancestors: C<CSV>
 
 
 =head2 QuoteEscapeCharacter => Str
 
-  The single character used for escaping the quote character inside an
-already escaped value.
+  A single character used for escaping the quotation mark character
+inside an already escaped value. For example, the value """ a , b """
+is parsed as " a , b ".
 
 
 =head2 RecordDelimiter => Str
 
-  The value used to separate individual records.
+  A single character used to separate individual records in the input.
+Instead of the default value, you can specify an arbitrary delimiter.
 
 
 

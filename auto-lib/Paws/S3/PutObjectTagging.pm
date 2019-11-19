@@ -67,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket containing the object.
 
 
 
@@ -79,25 +79,25 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The MD5 hash for the request body.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Name of the tag.
 
 
 
 =head2 B<REQUIRED> Tagging => L<Paws::S3::Tagging>
 
-
+Container for the TagSet and Tag elements
 
 
 
 =head2 VersionId => Str
 
-
+The versionId of the object that the tag-set will be added to.
 
 
 

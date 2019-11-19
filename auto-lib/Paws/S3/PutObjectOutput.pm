@@ -31,9 +31,11 @@ Entity tag for the uploaded object.
 
 =head2 Expiration => Str
 
-If the object expiration is configured, this will contain the
-expiration date (expiry-date) and rule ID (rule-id). The value of
-rule-id is URL encoded.
+If the expiration is configured for the object (see
+PutBucketLifecycleConfiguration), the response includes this header. It
+includes the expiry-date and rule-id key-value pairs that provide
+information about object expiration. The value of the rule-id is URL
+encoded.
 
 
 
@@ -45,8 +47,10 @@ Valid values are: C<"requester">
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+If you specified server-side encryption either with an AWS KMS customer
+master key (CMK) or Amazon S3-managed encryption key in your PUT
+request, the response includes this header. It confirms the encryption
+algorithm that Amazon S3 used to encrypt the object.
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
@@ -76,8 +80,9 @@ holding JSON with the encryption context key-value pairs.
 
 =head2 SSEKMSKeyId => Str
 
-If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+If the x-amz-server-side-encryption is present and has the value of
+aws:kms, this header specifies the ID of the AWS Key Management Service
+(KMS) customer master key (CMK) that was used for the object.
 
 
 

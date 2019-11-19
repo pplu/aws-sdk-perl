@@ -68,13 +68,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket for which to set the logging parameters.
 
 
 
 =head2 B<REQUIRED> BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>
 
-
+Container for logging status information.
 
 
 
@@ -86,7 +86,7 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The MD5 hash of the C<PutBucketLogging> request body.
 
 
 

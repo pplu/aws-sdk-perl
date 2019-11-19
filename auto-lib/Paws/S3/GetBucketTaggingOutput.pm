@@ -17,7 +17,7 @@ Paws::S3::GetBucketTaggingOutput
 
 =head2 B<REQUIRED> TagSet => ArrayRef[L<Paws::S3::Tag>]
 
-
+Contains the tag set.
 
 
 

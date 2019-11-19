@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Delete 
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for the objects to delete.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Objects => ArrayRef[L<Paws::S3::ObjectIdentifier>]
 
-  
+  The objects to delete.
 
 
 =head2 Quiet => Bool

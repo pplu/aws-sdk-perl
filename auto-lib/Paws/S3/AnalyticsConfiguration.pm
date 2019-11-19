@@ -36,10 +36,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Analyti
 Specifies the configuration and any analyses for the analytics filter
 of an Amazon S3 bucket.
 
-For more information, see GET Bucket analytics
-(https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETAnalyticsConfig.html)
-in the I<Amazon Simple Storage Service API Reference>.
-
 =head1 ATTRIBUTES
 
 

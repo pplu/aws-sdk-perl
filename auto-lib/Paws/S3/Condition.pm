@@ -32,7 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Conditi
 
 =head1 DESCRIPTION
 
-Specifies a condition that must be met for a redirect to apply.
+A container for describing a condition that must be met for the
+specified redirect to apply. For example, 1. If request is for pages in
+the C</docs> folder, redirect to the C</documents> folder. 2. If
+request results in HTTP error 4xx, redirect request to another host
+where you might process the error.
 
 =head1 ATTRIBUTES
 

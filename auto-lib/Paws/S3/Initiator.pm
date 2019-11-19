@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Initiat
 
 =head1 DESCRIPTION
 
-This class has no description
+Container element that identifies who initiated the ultipart upload.
 
 =head1 ATTRIBUTES
 

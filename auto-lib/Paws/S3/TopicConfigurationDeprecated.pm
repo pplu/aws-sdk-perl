@@ -34,7 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::TopicCo
 
 =head1 DESCRIPTION
 
-This class has no description
+A container for specifying the configuration for publication of
+messages to an Amazon Simple Notification Service (Amazon SNS) topic
+when Amazon S3 detects specified events. This data type is deperecated.
+Please use TopicConfiguration instead.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +49,7 @@ This class has no description
 
 =head2 Events => ArrayRef[Str|Undef]
 
-  
+  A collection of events related to objects
 
 
 =head2 Id => Str

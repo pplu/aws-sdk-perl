@@ -2,6 +2,7 @@ package Paws::S3::ReplicationRule;
   use Moose;
   has DeleteMarkerReplication => (is => 'ro', isa => 'Paws::S3::DeleteMarkerReplication');
   has Destination => (is => 'ro', isa => 'Paws::S3::Destination', required => 1);
+  has ExistingObjectReplication => (is => 'ro', isa => 'Paws::S3::ExistingObjectReplication');
   has Filter => (is => 'ro', isa => 'Paws::S3::ReplicationRuleFilter');
   has ID => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
@@ -54,6 +55,13 @@ replicas.
   A container for information about the replication destination.
 
 
+=head2 ExistingObjectReplication => L<Paws::S3::ExistingObjectReplication>
+
+  A container that specifies information about existing object
+replication. You can choose whether to enable or disable the
+replication of existing objects.
+
+
 =head2 Filter => L<Paws::S3::ReplicationRuleFilter>
 
   
@@ -93,9 +101,8 @@ rules
 
 =back
 
-For more information, see Cross-Region Replication (CRR)
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) in the
-I<Amazon S3 Developer Guide>.
+For more information, see Replication in the I<Amazon S3 Developer
+Guide>.
 
 
 =head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>
@@ -104,7 +111,8 @@ I<Amazon S3 Developer Guide>.
 source objects that you want to replicate. You can choose to enable or
 disable the replication of these objects. Currently, Amazon S3 supports
 only the filter that you can specify for objects created with
-server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+server-side encryption using a customer master key (CMK) stored in AWS
+Key Management Service (SSE-KMS).
 
 
 =head2 B<REQUIRED> Status => Str

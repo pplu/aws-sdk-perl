@@ -32,19 +32,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head1 DESCRIPTION
 
-This class has no description
+A container for specifying rule filters. The filters determine the
+subset of objects to which the rule applies. This element is required
+only if you specify more than one filter.
+
+For example:
+
+=over
+
+=item *
+
+If you specify both a Prefix and a Tag filter, wrap these filters in an
+And tag.
+
+=item *
+
+If you specify a filter based on multiple tags, wrap the Tag elements
+in an And tag
+
+=back
+
 
 =head1 ATTRIBUTES
 
 
 =head2 Prefix => Str
 
-  
+  An object keyname prefix that identifies the subset of objects to which
+the rule applies.
 
 
 =head2 Tags => ArrayRef[L<Paws::S3::Tag>]
 
-  
+  An array of tags containing key and value pairs.
 
 
 

@@ -20,25 +20,26 @@ Paws::S3::GetBucketWebsiteOutput
 
 =head2 ErrorDocument => L<Paws::S3::ErrorDocument>
 
-
+The name of the error document for the website.
 
 
 
 =head2 IndexDocument => L<Paws::S3::IndexDocument>
 
-
+The name of the index document for the website.
 
 
 
 =head2 RedirectAllRequestsTo => L<Paws::S3::RedirectAllRequestsTo>
 
-
+Specifies the redirect behavior of all requests to a website endpoint
+of an Amazon S3 bucket.
 
 
 
 =head2 RoutingRules => ArrayRef[L<Paws::S3::RoutingRule>]
 
-
+Rules that define when a redirect is applied and the redirect behavior.
 
 
 

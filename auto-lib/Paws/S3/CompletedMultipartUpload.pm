@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Complet
 
 =head1 DESCRIPTION
 
-This class has no description
+The container for the completed multipart upload details.
 
 =head1 ATTRIBUTES
 
 
 =head2 Parts => ArrayRef[L<Paws::S3::CompletedPart>]
 
-  
+  Array of CompletedPart data types.
 
 
 

@@ -36,34 +36,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Object 
 
 =head1 DESCRIPTION
 
-This class has no description
+An object consists of data and its descriptive metadata.
 
 =head1 ATTRIBUTES
 
 
 =head2 ETag => Str
 
-  
+  The entity tag is an MD5 hash of the object. ETag reflects only changes
+to the contents of an object, not its metadata.
 
 
 =head2 Key => Str
 
-  
+  The name that you assign to an object. You use the object key to
+retrieve the object.
 
 
 =head2 LastModified => Str
 
-  
+  The date the Object was Last Modified
 
 
 =head2 Owner => L<Paws::S3::Owner>
 
-  
+  The owner of the object
 
 
 =head2 Size => Int
 
-  
+  Size in bytes of the object
 
 
 =head2 StorageClass => Str

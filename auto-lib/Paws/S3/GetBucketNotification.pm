@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to get the notification configuration for.
+Name of the bucket for which to get the notification configuration
 
 
 

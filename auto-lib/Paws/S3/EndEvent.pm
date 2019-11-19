@@ -30,7 +30,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::EndEven
 
 =head1 DESCRIPTION
 
-This class has no description
+A message that indicates the request is complete and no more messages
+will be sent. You should not assume that the request is complete until
+the client receives an C<EndEvent>.
 
 =head1 ATTRIBUTES
 

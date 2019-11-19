@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> AccelerateConfiguration => L<Paws::S3::AccelerateConfiguration>
 
-Specifies the Accelerate Configuration you want to set for the bucket.
+Container for setting the transfer acceleration state.
 
 
 

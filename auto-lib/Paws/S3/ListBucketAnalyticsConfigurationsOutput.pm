@@ -26,7 +26,9 @@ The list of analytics configurations for a bucket.
 
 =head2 ContinuationToken => Str
 
-The ContinuationToken that represents where this request began.
+The marker that is used as a starting point for this analytics
+configuration list response. This value is present if it was sent in
+the request.
 
 
 

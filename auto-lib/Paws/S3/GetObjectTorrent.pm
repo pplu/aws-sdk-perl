@@ -52,13 +52,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket containing the object for which to get the
+torrent files.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+The object key for which to get the information.
 
 
 

@@ -17,7 +17,7 @@ Paws::S3::PutObjectTaggingOutput
 
 =head2 VersionId => Str
 
-
+The versionId of the object the tag-set was added to.
 
 
 

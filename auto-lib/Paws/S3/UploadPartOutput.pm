@@ -58,7 +58,7 @@ message integrity verification of the customer-provided encryption key.
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+customer master key (CMK) was used for the object.
 
 
 

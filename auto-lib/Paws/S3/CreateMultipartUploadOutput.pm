@@ -27,15 +27,24 @@ Paws::S3::CreateMultipartUploadOutput
 
 =head2 AbortDate => Str
 
-Date when multipart upload will become eligible for abort operation by
-lifecycle.
+If the bucket has a lifecycle rule configured with an action to abort
+incomplete multipart uploads and the prefix in the lifecycle rule
+matches the object name in the request, the response includes this
+header. The header indicates when the initiated multipart upload
+becomes eligible for an abort operation. For more information, see
+Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config).
+
+The response also includes the x-amz-abort-rule-id header that provides
+the ID of the lifecycle configuration rule that defines this action.
 
 
 
 =head2 AbortRuleId => Str
 
-Id of the lifecycle rule that makes a multipart upload eligible for
-abort operation.
+This header is returned along with the x-amz-abort-date header. It
+identifies the applicable lifecycle configuration rule that defines the
+action to abort incomplete multipart uploads.
 
 
 
@@ -91,7 +100,7 @@ holding JSON with the encryption context key-value pairs.
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+customer master key (CMK) that was used for the object.
 
 
 

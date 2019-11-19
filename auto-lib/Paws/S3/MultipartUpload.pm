@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Multipa
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for the MultipartUpload for the Amazon S3 object.
 
 =head1 ATTRIBUTES
 
@@ -58,7 +58,7 @@ This class has no description
 
 =head2 Owner => L<Paws::S3::Owner>
 
-  
+  Specifies the owner of the object that is part of the multipart upload.
 
 
 =head2 StorageClass => Str

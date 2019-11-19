@@ -54,7 +54,7 @@ bucket so that the delivered log files can be distinguished by key.
 
 =head2 TargetGrants => ArrayRef[L<Paws::S3::TargetGrant>]
 
-  
+  Container for granting information.
 
 
 =head2 B<REQUIRED> TargetPrefix => Str

@@ -25,7 +25,7 @@ A list of grants.
 
 =head2 Owner => L<Paws::S3::Owner>
 
-
+Container for the bucket owner's display name and ID.
 
 
 

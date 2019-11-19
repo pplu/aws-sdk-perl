@@ -42,7 +42,8 @@ I<Amazon Simple Storage Service Developer Guide>.
 
 =head2 B<REQUIRED> CORSRules => ArrayRef[L<Paws::S3::CORSRule>]
 
-  A set of allowed origins and methods.
+  A set of origins and methods (cross-origin access that you want to
+allow). You can add up to 100 rules to the configuration.
 
 
 

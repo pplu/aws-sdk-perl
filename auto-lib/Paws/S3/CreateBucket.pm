@@ -74,7 +74,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket to create.
 
 
 
@@ -86,7 +86,7 @@ Size of the body in bytes.
 
 =head2 CreateBucketConfiguration => L<Paws::S3::CreateBucketConfiguration>
 
-
+The configuration information for the bucket.
 
 
 
@@ -124,8 +124,8 @@ Allows grantee to write the ACL for the applicable bucket.
 
 =head2 ObjectLockEnabledForBucket => Bool
 
-Specifies whether you want Amazon S3 object lock to be enabled for the
-new bucket.
+Specifies whether you want S3 Object Lock to be enabled for the new
+bucket.
 
 
 

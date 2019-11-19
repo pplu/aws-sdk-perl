@@ -32,19 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CopyObj
 
 =head1 DESCRIPTION
 
-This class has no description
+E<gt>Container for all response elements.
 
 =head1 ATTRIBUTES
 
 
 =head2 ETag => Str
 
-  
+  Returns the ETag of the new object. The ETag reflects only changes to
+the contents of an object, not its metadata. The source and destination
+ETag is identical for a successfully copied object.
 
 
 =head2 LastModified => Str
 
-  
+  Returns the date that the object was last modified.
 
 
 

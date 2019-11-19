@@ -1,14 +1,13 @@
-package Paws::S3::ObjectIdentifier;
+package Paws::S3::ExistingObjectReplication;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::S3::ObjectIdentifier
+Paws::S3::ExistingObjectReplication
 
 =head1 USAGE
 
@@ -19,32 +18,29 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::S3::ObjectIdentifier object:
+As an example, if Att1 is expected to be a Paws::S3::ExistingObjectReplication object:
 
-  $service_obj->Method(Att1 => { Key => $value, ..., VersionId => $value  });
+  $service_obj->Method(Att1 => { Status => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ObjectIdentifier object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ExistingObjectReplication object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Key
+  $result->Att1->Status
 
 =head1 DESCRIPTION
 
-Object Identifier is unique value to identify objects.
+A container that specifies information about existing object
+replication. You can choose whether to enable or disable the
+replication of existing objects.
 
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => Str
+=head2 B<REQUIRED> Status => Str
 
-  Key name of the object to delete.
-
-
-=head2 VersionId => Str
-
-  VersionId for the specific version of the object to delete.
+  Specifies whether existing object replication is enabled.
 
 
 

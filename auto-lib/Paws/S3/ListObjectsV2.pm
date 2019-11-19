@@ -82,7 +82,7 @@ Name of the bucket to list.
 
 ContinuationToken indicates Amazon S3 that the list is being continued
 on this bucket with a token. ContinuationToken is obfuscated and is not
-a real key
+a real key.
 
 
 
@@ -131,7 +131,7 @@ Valid values are: C<"requester">
 
 StartAfter is where you want Amazon S3 to start listing from. Amazon S3
 starts listing after this specified key. StartAfter can be any key in
-the bucket
+the bucket.
 
 
 

@@ -32,7 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Bucket 
 
 =head1 DESCRIPTION
 
-This class has no description
+In terms of implementation, a Bucket is a resource. An Amazon S3 bucket
+name is globally unique, and the namespace is shared by all AWS
+accounts.
 
 =head1 ATTRIBUTES
 

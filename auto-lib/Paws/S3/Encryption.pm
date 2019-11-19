@@ -33,8 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Encrypt
 
 =head1 DESCRIPTION
 
-Describes the server-side encryption that will be applied to the
-restore results.
+Contains the type of server-side encryption used.
 
 =head1 ATTRIBUTES
 

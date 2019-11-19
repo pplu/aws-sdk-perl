@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket.
 
 
 
@@ -69,7 +69,7 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The MD5 hash of the request body.
 
 
 

@@ -118,7 +118,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket to which to initiate the upload
 
 
 
@@ -187,7 +187,7 @@ Allows grantee to write the ACL for the applicable object.
 
 =head2 B<REQUIRED> Key => Str
 
-
+Object key for which the multipart upload is to be initiated.
 
 
 
@@ -206,14 +206,14 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-Specifies the object lock mode that you want to apply to the uploaded
+Specifies the Object Lock mode that you want to apply to the uploaded
 object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-Specifies the date and time when you want the object lock to expire.
+Specifies the date and time when you want the Object Lock to expire.
 
 
 

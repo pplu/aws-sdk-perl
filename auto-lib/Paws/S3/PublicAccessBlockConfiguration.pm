@@ -34,8 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::PublicA
 
 =head1 DESCRIPTION
 
-Specifies the Block Public Access configuration for an Amazon S3
-bucket.
+The PublicAccessBlock configuration that you want to apply to this
+Amazon S3 bucket. You can enable the configuration options in any
+combination. For more information about when Amazon S3 considers a
+bucket or object public, see The Meaning of "Public"
+(https://docs.aws.amazon.com/AmazonS3/latest/dev//access-control-block-public-access.html#access-control-block-public-access-policy-status)
+in the Amazon Simple Storage Service Developer Guide.
 
 =head1 ATTRIBUTES
 
@@ -56,6 +60,10 @@ public.
 =item *
 
 PUT Object calls fail if the request includes a public ACL.
+
+=item *
+
+PUT Bucket calls fail if the request includes a public ACL.
 
 =back
 

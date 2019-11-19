@@ -19,7 +19,7 @@ Paws::S3::SelectObjectContentOutput
 
 =head2 Payload => L<Paws::S3::SelectObjectContentEventStream>
 
-
+The array of results.
 
 
 

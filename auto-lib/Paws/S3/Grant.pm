@@ -32,14 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Grant o
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for grant information.
 
 =head1 ATTRIBUTES
 
 
 =head2 Grantee => L<Paws::S3::Grantee>
 
-  
+  The person being granted permissions.
 
 
 =head2 Permission => Str

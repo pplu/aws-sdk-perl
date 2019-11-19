@@ -70,7 +70,7 @@ Retention configuration to.
 =head2 BypassGovernanceRetention => Bool
 
 Indicates whether this operation should bypass Governance-mode
-restrictions.j
+restrictions.
 
 
 

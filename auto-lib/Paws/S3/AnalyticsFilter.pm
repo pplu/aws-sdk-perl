@@ -33,7 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Analyti
 
 =head1 DESCRIPTION
 
-This class has no description
+The filter used to describe a set of objects for analyses. A filter
+must have exactly one prefix, one tag, or one conjunction
+(AnalyticsAndOperator). If no filter is provided, all objects will be
+considered in any analysis.
 
 =head1 ATTRIBUTES
 

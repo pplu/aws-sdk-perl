@@ -31,7 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Invento
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies an inventory filter. The inventory only includes objects that
+meet the filter's criteria.
 
 =head1 ATTRIBUTES
 

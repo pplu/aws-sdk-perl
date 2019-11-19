@@ -135,7 +135,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the destination bucket.
 
 
 
@@ -259,7 +259,7 @@ Allows grantee to write the ACL for the applicable object.
 
 =head2 B<REQUIRED> Key => Str
 
-
+The key of the destination object.
 
 
 
@@ -284,13 +284,13 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The object lock mode that you want to apply to the copied object.
+The Object Lock mode that you want to apply to the copied object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when you want the copied object's object lock to
+The date and time when you want the copied object's Object Lock to
 expire.
 
 

@@ -35,36 +35,53 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CSVOutp
 
 =head1 DESCRIPTION
 
-Describes how CSV-formatted results are formatted.
+Describes how uncompressed comma-separated values (CSV)-formatted
+results are formatted.
 
 =head1 ATTRIBUTES
 
 
 =head2 FieldDelimiter => Str
 
-  The value used to separate individual fields in a record.
+  The value used to separate individual fields in a record. You can
+specify an arbitrary delimiter.
 
 
 =head2 QuoteCharacter => Str
 
-  The value used for escaping where the field delimiter is part of the
-value.
+  A single character used for escaping when the field delimiter is part
+of the value. For example, if the value is C<a, b>, Amazon S3 wraps
+this field value in quotation marks, as follows: C<" a , b ">.
 
 
 =head2 QuoteEscapeCharacter => Str
 
-  Th single character used for escaping the quote character inside an
+  The single character used for escaping the quote character inside an
 already escaped value.
 
 
 =head2 QuoteFields => Str
 
-  Indicates whether or not all output fields should be quoted.
+  Indicates whether to use quotation marks around output fields.
+
+=over
+
+=item *
+
+C<ALWAYS>: Always use quotation marks for output fields.
+
+=item *
+
+C<ASNEEDED>: Use quotation marks for output fields when needed.
+
+=back
+
 
 
 =head2 RecordDelimiter => Str
 
-  The value used to separate individual records.
+  A single character used to separate individual records in the output.
+Instead of the default value, you can specify an arbitrary delimiter.
 
 
 

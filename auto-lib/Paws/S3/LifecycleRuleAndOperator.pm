@@ -41,7 +41,7 @@ matching all of the predicates configured inside the And operator.
 
 =head2 Prefix => Str
 
-  
+  Prefix identifying one or more objects to which the rule applies.
 
 
 =head2 Tags => ArrayRef[L<Paws::S3::Tag>]

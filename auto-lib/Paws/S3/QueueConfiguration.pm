@@ -43,7 +43,7 @@ events.
 
 =head2 B<REQUIRED> Events => ArrayRef[Str|Undef]
 
-  
+  A collection of bucket events for which to send notiications
 
 
 =head2 Filter => L<Paws::S3::NotificationConfigurationFilter>

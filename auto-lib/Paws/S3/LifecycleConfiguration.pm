@@ -31,14 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Lifecyc
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for lifecycle rules. You can add as many as 1000 rules.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::Rule>]
 
-  
+  Specifies lifecycle configuration rules for an Amazon S3 bucket.
 
 
 

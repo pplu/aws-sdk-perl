@@ -23,7 +23,7 @@ Paws::S3::UploadPartCopyOutput
 
 =head2 CopyPartResult => L<Paws::S3::CopyPartResult>
 
-
+Container for all response elements.
 
 
 
@@ -66,7 +66,7 @@ message integrity verification of the customer-provided encryption key.
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+customer master key (CMK) that was used for the object.
 
 
 

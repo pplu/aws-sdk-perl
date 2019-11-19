@@ -18,13 +18,13 @@ Paws::S3::GetObjectTaggingOutput
 
 =head2 B<REQUIRED> TagSet => ArrayRef[L<Paws::S3::Tag>]
 
-
+Contains the tag set.
 
 
 
 =head2 VersionId => Str
 
-
+The versionId of the object for which you got the tagging information.
 
 
 

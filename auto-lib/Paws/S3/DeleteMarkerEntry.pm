@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::DeleteM
 
 =head1 DESCRIPTION
 
-This class has no description
+Information about the delete marker.
 
 =head1 ATTRIBUTES
 
@@ -58,7 +58,7 @@ version of an object.
 
 =head2 Owner => L<Paws::S3::Owner>
 
-  
+  The account that created the delete marker.E<gt>
 
 
 =head2 VersionId => Str

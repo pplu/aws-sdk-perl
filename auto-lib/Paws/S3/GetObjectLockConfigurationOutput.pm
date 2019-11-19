@@ -19,7 +19,7 @@ Paws::S3::GetObjectLockConfigurationOutput
 
 =head2 ObjectLockConfiguration => L<Paws::S3::ObjectLockConfiguration>
 
-The specified bucket's object lock configuration.
+The specified bucket's Object Lock configuration.
 
 
 

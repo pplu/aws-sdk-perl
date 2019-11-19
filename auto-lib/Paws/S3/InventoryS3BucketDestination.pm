@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Invento
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains the bucket name, file format, bucket owner (optional), and
+prefix (optional) where inventory results are published.
 
 =head1 ATTRIBUTES
 

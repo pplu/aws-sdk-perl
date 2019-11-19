@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Metrics
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies a metrics configuration filter. The metrics configuration
+only includes objects that meet the filter's criteria. A filter must be
+a prefix, a tag, or a conjunction (MetricsAndOperator).
 
 =head1 ATTRIBUTES
 

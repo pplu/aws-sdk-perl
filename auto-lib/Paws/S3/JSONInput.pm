@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::JSONInp
 
 =head1 DESCRIPTION
 
-This class has no description
+Specifies JSON as object's input serialization format.
 
 =head1 ATTRIBUTES
 

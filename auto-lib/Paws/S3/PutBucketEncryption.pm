@@ -60,9 +60,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 Specifies default encryption for a bucket using server-side encryption
-with Amazon S3-managed keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS).
-For information about the Amazon S3 default encryption feature, see
-Amazon S3 Default Bucket Encryption
+with Amazon S3-managed keys (SSE-S3) or customer master keys stored in
+AWS KMS (SSE-KMS). For information about the Amazon S3 default
+encryption feature, see Amazon S3 Default Bucket Encryption
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 

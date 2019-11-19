@@ -25,13 +25,18 @@ Paws::S3::CompleteMultipartUploadOutput
 
 =head2 Bucket => Str
 
-
+The name of the bucket that contains the newly created object.
 
 
 
 =head2 ETag => Str
 
-Entity tag of the object.
+Entity tag that identifies the newly created object's data. Objects
+with different object data will have different entity tags. The entity
+tag is an opaque string. The entity tag may or may not be an MD5 digest
+of the object data. If the entity tag is not an MD5 digest of the
+object data, it will contain one or more nonhexadecimal characters
+and/or will consist of less than 32 or more than 32 hexadecimal digits.
 
 
 
@@ -45,13 +50,13 @@ rule-id is URL encoded.
 
 =head2 Key => Str
 
-
+The object key of the newly created object.
 
 
 
 =head2 Location => Str
 
-
+The URI that identifies the newly created object.
 
 
 
@@ -63,21 +68,25 @@ Valid values are: C<"requester">
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+If you specified server-side encryption either with an Amazon
+S3-managed encryption key or an AWS KMS customer master key (CMK) in
+your initiate multipart upload request, the response includes this
+header. It confirms the encryption algorithm that Amazon S3 used to
+encrypt the object.
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+customer master key (CMK) that was used for the object.
 
 
 
 =head2 VersionId => Str
 
-Version of the object.
+Version ID of the newly created object, in case the bucket has
+versioning turned on.
 
 
 

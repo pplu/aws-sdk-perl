@@ -45,13 +45,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
         RedirectAllRequestsTo => {
-          HostName => 'MyHostName',
-          Protocol => 'http',         # values: http, https; OPTIONAL
+          HostName => 'MyHostName',    # OPTIONAL
+          Protocol => 'http',          # values: http, https; OPTIONAL
         },    # OPTIONAL
         RoutingRules => [
           {
             Redirect => {
-              HostName         => 'MyHostName',
+              HostName         => 'MyHostName',            # OPTIONAL
               HttpRedirectCode => 'MyHttpRedirectCode',    # OPTIONAL
               Protocol => 'http',    # values: http, https; OPTIONAL
               ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL
@@ -78,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name.
 
 
 
@@ -90,13 +90,16 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The base64-encoded 128-bit MD5 digest of the data. You must use this
+header as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, see RFC 1864
+(http://www.ietf.org/rfc/rfc1864.txt).
 
 
 
 =head2 B<REQUIRED> WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
 
-
+Container for the request.
 
 
 

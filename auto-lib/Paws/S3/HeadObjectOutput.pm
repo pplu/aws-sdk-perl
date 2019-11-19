@@ -44,7 +44,7 @@ Paws::S3::HeadObjectOutput
 
 =head2 AcceptRanges => Str
 
-
+Indicates that a range of bytes was specifed.
 
 
 
@@ -140,19 +140,30 @@ HTTP headers.
 
 =head2 ObjectLockLegalHoldStatus => Str
 
-The Legal Hold status for the specified object.
+Specifies whether a legal hold is in effect for this object. This
+header is only returned if the requester has the
+C<s3:GetObjectLegalHold> permission. This header is not returned if the
+specified version of this object has never had a legal hold applied.
+For more information about S3 Object Lock, see Object Lock
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
 
 Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The object lock mode currently in place for this object.
+The Object Lock mode, if any, that's in effect for this object. This
+header is only returned if the requester has the
+C<s3:GetObjectRetention> permission. For more information about S3
+Object Lock, see Object Lock
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when this object's object lock expires.
+The date and time when the Object Lock retention period expires. This
+header is only returned if the requester has the
+C<s3:GetObjectRetention> permission.
 
 
 
@@ -164,7 +175,41 @@ The count of parts this object has.
 
 =head2 ReplicationStatus => Str
 
+Amazon S3 can return this header if your request involves a bucket that
+is either a source or destination in a replication rule.
 
+In replication you have a source bucket on which you configure
+replication and destination bucket where Amazon S3 stores object
+replicas. When you request an object (GetObject) or object metadata
+(HeadObject) from these buckets, Amazon S3 will return the
+x-amz-replication-status header in the response as follows:
+
+=over
+
+=item *
+
+If requesting object from the source bucket E<mdash> Amazon S3 will
+return the x-amz-replication-status header if object in your request is
+eligible for replication.
+
+For example, suppose in your replication configuration you specify
+object prefix "TaxDocs" requesting Amazon S3 to replicate objects with
+key prefix "TaxDocs". Then any objects you upload with this key name
+prefix, for example "TaxDocs/document1.pdf", is eligible for
+replication. For any object request with this key name prefix Amazon S3
+will return the x-amz-replication-status header with value PENDING,
+COMPLETED or FAILED indicating object replication status.
+
+=item *
+
+If requesting object from the destination bucket E<mdash> Amazon S3
+will return the x-amz-replication-status header with value REPLICA if
+object in your request is a replica that Amazon S3 created.
+
+=back
+
+For more information, see Replication
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
 
 Valid values are: C<"COMPLETE">, C<"PENDING">, C<"FAILED">, C<"REPLICA">
 
@@ -176,15 +221,33 @@ Valid values are: C<"requester">
 
 =head2 Restore => Str
 
-Provides information about object restoration operation and expiration
-time of the restored object copy.
+If the object is an archived object (an object whose storage class is
+GLACIER), the response includes this header if either the archive
+restoration is in progress (see RestoreObject or an archive copy is
+already restored.
+
+If an archive copy is already restored, the header value indicates when
+Amazon S3 is scheduled to delete the object copy. For example:
+
+C<x-amz-restore: ongoing-request="false", expiry-date="Fri, 23 Dec 2012
+00:00:00 GMT">
+
+If the object restoration is in progress, the header returns the value
+C<ongoing-request="true">.
+
+For more information about archiving objects, see Transitioning
+Objects: General Considerations
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-transition-general-considerations).
 
 
 
 =head2 ServerSideEncryption => Str
 
-The Server-side encryption algorithm used when storing this object in
-S3 (e.g., AES256, aws:kms).
+If the object is stored using server-side encryption either with an AWS
+KMS customer master key (CMK) or an Amazon S3-managed encryption key,
+the response includes this header with the value of the Server-side
+encryption algorithm used when storing this object in S3 (e.g., AES256,
+aws:kms).
 
 Valid values are: C<"AES256">, C<"aws:kms">
 
@@ -207,13 +270,17 @@ message integrity verification of the customer-provided encryption key.
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+customer master key (CMK) that was used for the object.
 
 
 
 =head2 StorageClass => Str
 
+Provides storage class information of the object. Amazon S3 returns
+this header for all objects except for Standard storage class objects.
 
+For more information, see Storage Classes
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html).
 
 Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 

@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Tag obj
 
 =head1 DESCRIPTION
 
-This class has no description
+A container of a key value name pair.
 
 =head1 ATTRIBUTES
 

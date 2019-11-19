@@ -20,7 +20,7 @@ Paws::S3::GetObjectTorrentOutput
 
 =head2 Body => Str
 
-
+A Bencoded dictionary as defined by the BitTorrent specification
 
 
 

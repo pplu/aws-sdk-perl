@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Records
 
 =head1 DESCRIPTION
 
-This class has no description
+The container for the records event.
 
 =head1 ATTRIBUTES
 

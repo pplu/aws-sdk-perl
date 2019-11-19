@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Storage
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for data related to the storage class analysis for an Amazon
+S3 bucket for export.
 
 =head1 ATTRIBUTES
 

@@ -56,20 +56,16 @@ are owned by same AWS account that owns the source object.
 you direct Amazon S3 to change replica ownership to the AWS account
 that owns the destination bucket by specifying the
 C<AccessControlTranslation> property, this is the account ID of the
-destination bucket owner. For more information, see Cross-Region
-Replication Additional Configuration: Change Replica Owner
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html)
+destination bucket owner. For more information, see Replication
+Additional Configuration: Change Replica Owner
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html)
 in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 =head2 B<REQUIRED> Bucket => Str
 
   The Amazon Resource Name (ARN) of the bucket where you want Amazon S3
-to store replicas of the object identified by the rule.
-
-A replication configuration can replicate objects to only one
-destination bucket. If there are multiple rules in your replication
-configuration, all rules must specify the same destination bucket.
+to store the results.
 
 
 =head2 EncryptionConfiguration => L<Paws::S3::EncryptionConfiguration>

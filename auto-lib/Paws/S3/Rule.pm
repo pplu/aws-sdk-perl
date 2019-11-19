@@ -53,7 +53,7 @@ in the I<Amazon Simple Storage Service API Reference>.
 
 =head2 Expiration => L<Paws::S3::LifecycleExpiration>
 
-  
+  Specifies the expiration for the lifecycle of the object.
 
 
 =head2 ID => Str
@@ -86,7 +86,7 @@ rule is not currently being applied.
 
 =head2 Transition => L<Paws::S3::Transition>
 
-  
+  Specifies when an object transitions to a specified storage class.
 
 
 

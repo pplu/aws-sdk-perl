@@ -64,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-The bucket whose object lock configuration you want to create or
+The bucket whose Object Lock configuration you want to create or
 replace.
 
 
@@ -77,7 +77,7 @@ The MD5 hash for the request body.
 
 =head2 ObjectLockConfiguration => L<Paws::S3::ObjectLockConfiguration>
 
-The object lock configuration that you want to apply to the specified
+The Object Lock configuration that you want to apply to the specified
 bucket.
 
 
@@ -90,8 +90,7 @@ Valid values are: C<"requester">
 
 =head2 Token => Str
 
-A token to allow Amazon S3 object lock to be enabled for an existing
-bucket.
+A token to allow Object Lock to be enabled for an existing bucket.
 
 
 

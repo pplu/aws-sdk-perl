@@ -34,29 +34,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Deleted
 
 =head1 DESCRIPTION
 
-This class has no description
+Information about the deleted object.
 
 =head1 ATTRIBUTES
 
 
 =head2 DeleteMarker => Bool
 
-  
+  Specifies whether the versioned object that was permanently deleted was
+(true) or was not (false) a delete marker. In a simple DELETE, this
+header indicates whether (true) or not (false) a delete marker was
+created.
 
 
 =head2 DeleteMarkerVersionId => Str
 
-  
+  The version ID of the delete marker created as a result of the DELETE
+operation. If you delete a specific object version, the value returned
+by this header is the version ID of the object version deleted.
 
 
 =head2 Key => Str
 
-  
+  The name of the deleted object.
 
 
 =head2 VersionId => Str
 
-  
+  The version ID of the deleted object.
 
 
 

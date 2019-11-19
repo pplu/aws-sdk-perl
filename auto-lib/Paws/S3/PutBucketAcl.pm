@@ -93,7 +93,7 @@ Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"aut
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket to which to apply the ACL.
 
 
 
@@ -105,7 +105,10 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The base64-encoded 128-bit MD5 digest of the data. This header must be
+used as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, go to RFC 1864.
+(http://www.ietf.org/rfc/rfc1864.txt)
 
 
 

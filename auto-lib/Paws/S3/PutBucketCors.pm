@@ -60,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+Specifies the bucket impacted by the C<cors>configuration.
 
 
 
@@ -72,13 +72,20 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-
+The base64-encoded 128-bit MD5 digest of the data. This header must be
+used as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, go to RFC 1864.
+(http://www.ietf.org/rfc/rfc1864.txt)
 
 
 
 =head2 B<REQUIRED> CORSConfiguration => L<Paws::S3::CORSConfiguration>
 
-
+Describes the cross-origin access configuration for objects in an
+Amazon S3 bucket. For more information, see Enabling Cross-Origin
+Resource Sharing
+(https://docs.aws.amazon.com/AmazonS3/latest/dev//cors.html) in the
+Amazon Simple Storage Service Developer Guide.
 
 
 

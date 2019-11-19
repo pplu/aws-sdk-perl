@@ -17,7 +17,7 @@ Paws::S3::GetBucketLifecycleOutput
 
 =head2 Rules => ArrayRef[L<Paws::S3::Rule>]
 
-
+Container for a lifecycle rule.
 
 
 

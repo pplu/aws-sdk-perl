@@ -28,8 +28,23 @@ Paws::S3::ListObjectsV2Output
 
 =head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
-CommonPrefixes contains all (if there are any) keys between Prefix and
-the next occurrence of the string specified by delimiter
+All of the keys rolled up into a common prefix count as a single return
+when calculating the number of returns.
+
+A response can contain C<CommonPrefixes> only if you specify a
+delimiter.
+
+C<CommonPrefixes> contains all (if there are any) keys between
+C<Prefix> and the next occurrence of the string specified by a
+delimiter.
+
+C<CommonPrefixes> lists keys that act like subdirectories in the
+directory specified by C<Prefix>.
+
+For example, if the prefix is C<notes/> and the delimiter is a slash
+(C</>) as in C<notes/summer/july>, the common prefix is
+C<notes/summer/>. All of the keys that roll up into a common prefix
+count as a single return when calculating the number of returns.
 
 
 
@@ -41,28 +56,39 @@ Metadata about each object returned.
 
 =head2 ContinuationToken => Str
 
-ContinuationToken indicates Amazon S3 that the list is being continued
-on this bucket with a token. ContinuationToken is obfuscated and is not
-a real key
+If ContinuationToken was sent with the request, it is included in the
+response.
 
 
 
 =head2 Delimiter => Str
 
-A delimiter is a character you use to group keys.
+Causes keys that contain the same string between the prefix and the
+first occurrence of the delimiter to be rolled up into a single result
+element in the CommonPrefixes collection. These rolled-up keys are not
+returned elsewhere in the response. Each rolled-up result counts as
+only one return against the MaxKeys value.
 
 
 
 =head2 EncodingType => Str
 
-Encoding type used by Amazon S3 to encode object keys in the response.
+Encoding type used by Amazon S3 to encode object key names in the XML
+response.
+
+If you specify the encoding-type request parameter, Amazon S3 includes
+this element in the response, and returns encoded key name values in
+the following response elements:
+
+C<Delimiter, Prefix, Key,> and C<StartAfter>.
 
 Valid values are: C<"url">
 
 =head2 IsTruncated => Bool
 
-A flag that indicates whether or not Amazon S3 returned all of the
-results that satisfied the search criteria.
+Set to false if all of the results were returned. Set to true if more
+keys are available to return. If the number of results exceeds that
+specified by MaxKeys, all of the results might not be returned.
 
 
 
@@ -83,7 +109,7 @@ might contain fewer keys but will never contain more.
 
 =head2 Name => Str
 
-Name of the bucket to list.
+Name of the bucket.
 
 
 
@@ -98,15 +124,14 @@ NextContinuationToken is obfuscated and is not a real key
 
 =head2 Prefix => Str
 
-Limits the response to keys that begin with the specified prefix.
+Keys that begin with the indicated prefix.
 
 
 
 =head2 StartAfter => Str
 
-StartAfter is where you want Amazon S3 to start listing from. Amazon S3
-starts listing after this specified key. StartAfter can be any key in
-the bucket
+If StartAfter was sent with the request, it is included in the
+response.
 
 
 

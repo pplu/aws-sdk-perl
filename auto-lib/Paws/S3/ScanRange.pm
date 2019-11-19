@@ -41,13 +41,21 @@ This class has no description
 
   Specifies the end of the byte range. This parameter is optional. Valid
 values: non-negative integers. The default value is one less than the
-size of the object being queried.
+size of the object being queried. If only the End parameter is
+supplied, it is interpreted to mean scan the last N bytes of the file.
+For example;
+C<E<lt>scanrangeE<gt>E<lt>endE<gt>50E<lt>/endE<gt>E<lt>/scanrangeE<gt>>
+means scan the last 50 bytes.
 
 
 =head2 Start => Int
 
   Specifies the start of the byte range. This parameter is optional.
-Valid values: non-negative integers. The default value is 0.
+Valid values: non-negative integers. The default value is 0. If only
+start is supplied, it means scan from that point to the end of the
+file.For example;
+C<E<lt>scanrangeE<gt>E<lt>startE<gt>50E<lt>/startE<gt>E<lt>/scanrangeE<gt>>
+means scan from byte 50 until the end of the file.
 
 
 

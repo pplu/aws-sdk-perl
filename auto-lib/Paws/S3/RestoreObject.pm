@@ -150,7 +150,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The bucket name.
 
 
 
@@ -162,7 +162,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Key => Str
 
-
+Object key for which the operation was initiated.
 
 
 
@@ -180,7 +180,7 @@ Valid values are: C<"requester">
 
 =head2 VersionId => Str
 
-
+VersionId used to reference a specific version of the object.
 
 
 

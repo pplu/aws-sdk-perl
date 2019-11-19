@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to which the multipart upload was initiated.
+The bucket to which the upload was taking place.
 
 
 

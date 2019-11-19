@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Lifecyc
 
 =head1 DESCRIPTION
 
-This class has no description
+Container for the expiration for the lifecycle of the object.
 
 =head1 ATTRIBUTES
 

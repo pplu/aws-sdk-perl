@@ -34,19 +34,30 @@ Name of the bucket to which the multipart upload was initiated.
 
 =head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
-
+If you specify a delimiter in the request, then the result returns each
+distinct key prefix containing the delimiter in a CommonPrefixes
+element. The distinct key prefixes are returned in the Prefix child
+element.
 
 
 
 =head2 Delimiter => Str
 
-
+Contains the delimiter you specified in the request. If you don't
+specify a delimiter in your request, this element is absent from the
+response.
 
 
 
 =head2 EncodingType => Str
 
 Encoding type used by Amazon S3 to encode object keys in the response.
+
+If you specify C<encoding-type> request parameter, Amazon S3 includes
+this element in the response, and returns encoded key name values in
+the following response elements:
+
+C<Delimiter>, C<KeyMarker>, C<Prefix>, C<NextKeyMarker>, C<Key>.
 
 Valid values are: C<"url">
 
@@ -103,7 +114,8 @@ Upload ID after which listing began.
 
 =head2 Uploads => ArrayRef[L<Paws::S3::MultipartUpload>]
 
-
+Container for elements related to a particular multipart upload. A
+response can contain zero or more Upload elements.
 
 
 

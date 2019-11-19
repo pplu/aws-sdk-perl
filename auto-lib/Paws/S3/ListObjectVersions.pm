@@ -71,13 +71,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+The name of the bucket that contains the objects.
 
 
 
 =head2 Delimiter => Str
 
-A delimiter is a character you use to group keys.
+A delimiter is a character that you specify to group keys. All keys
+that contain the same string between the C<prefix> and the first
+occurrence of the delimiter are grouped under a single result element
+in CommonPrefixes. These groups are counted as one result against the
+max-keys limitation. These keys are not returned elsewhere in the
+response.
 
 
 
@@ -96,13 +101,22 @@ Specifies the key to start with when listing objects in a bucket.
 =head2 MaxKeys => Int
 
 Sets the maximum number of keys returned in the response. The response
-might contain fewer keys but will never contain more.
+might contain fewer keys but will never contain more. If additional
+keys satisfy the search criteria, but were not returned because
+max-keys was exceeded, the response contains
+E<lt>isTruncatedE<gt>trueE<lt>/isTruncatedE<gt>. To return the
+additional keys, see key-marker and version-id-marker.
 
 
 
 =head2 Prefix => Str
 
-Limits the response to keys that begin with the specified prefix.
+Use this parameter to select only those keys that begin with the
+specified prefix. You can use prefixes to separate a bucket into
+different groupings of keys. (You can think of using prefix to make
+groups in the same way you'd use a folder in a file system.) You can
+use prefix with delimiter to roll up numerous objects into a single
+result under CommonPrefixes.
 
 
 

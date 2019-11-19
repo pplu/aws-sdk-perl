@@ -49,7 +49,7 @@ Paws::S3::GetObjectOutput
 
 =head2 AcceptRanges => Str
 
-
+Indicates that a range of bytes was specifed.
 
 
 
@@ -165,13 +165,13 @@ Valid values are: C<"ON">, C<"OFF">
 
 =head2 ObjectLockMode => Str
 
-The object lock mode currently in place for this object.
+The Object Lock mode currently in place for this object.
 
 Valid values are: C<"GOVERNANCE">, C<"COMPLIANCE">
 
 =head2 ObjectLockRetainUntilDate => Str
 
-The date and time when this object's object lock will expire.
+The date and time when this object's Object Lock will expire.
 
 
 
@@ -183,7 +183,8 @@ The count of parts this object has.
 
 =head2 ReplicationStatus => Str
 
-
+Amazon S3 can return this if your request involves a bucket that is
+either a source or destination in a replication rule.
 
 Valid values are: C<"COMPLETE">, C<"PENDING">, C<"FAILED">, C<"REPLICA">
 
@@ -226,13 +227,14 @@ message integrity verification of the customer-provided encryption key.
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+customer master key (CMK) that was used for the object.
 
 
 
 =head2 StorageClass => Str
 
-
+Provides storage class information of the object. Amazon S3 returns
+this header for all objects except for Standard storage class objects.
 
 Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 

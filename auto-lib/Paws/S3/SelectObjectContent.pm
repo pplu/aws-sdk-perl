@@ -149,6 +149,29 @@ parameter is optional, but when specified, it must not be empty. See
 RFC 2616, Section 14.35.1 about how to specify the start and end of the
 range.
 
+C<ScanRange>may be used in the following ways:
+
+=over
+
+=item *
+
+C<E<lt>scanrangeE<gt>E<lt>startE<gt>50E<lt>/startE<gt>E<lt>endE<gt>100E<lt>/endE<gt>E<lt>/scanrangeE<gt>>
+- process only the records starting between the bytes 50 and 100
+(inclusive, counting from zero)
+
+=item *
+
+C<E<lt>scanrangeE<gt>E<lt>startE<gt>50E<lt>/startE<gt>E<lt>/scanrangeE<gt>>
+- process only the records starting after the byte 50
+
+=item *
+
+C<E<lt>scanrangeE<gt>E<lt>endE<gt>50E<lt>/endE<gt>E<lt>/scanrangeE<gt>>
+- process only the records within the last 50 bytes of the file.
+
+=back
+
+
 
 
 =head2 SSECustomerAlgorithm => Str

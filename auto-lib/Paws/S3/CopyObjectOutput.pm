@@ -26,13 +26,13 @@ Paws::S3::CopyObjectOutput
 
 =head2 CopyObjectResult => L<Paws::S3::CopyObjectResult>
 
-
+Container for all response elements.
 
 
 
 =head2 CopySourceVersionId => Str
 
-
+Version of the copied object in the destination bucket.
 
 
 
@@ -83,7 +83,7 @@ holding JSON with the encryption context key-value pairs.
 =head2 SSEKMSKeyId => Str
 
 If present, specifies the ID of the AWS Key Management Service (KMS)
-master encryption key that was used for the object.
+customer master key (CMK) that was used for the object.
 
 
 

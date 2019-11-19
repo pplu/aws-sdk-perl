@@ -34,7 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::QueueCo
 
 =head1 DESCRIPTION
 
-This class has no description
+This data type is deprecated. Please use QueueConfiguration for the
+same purposes. This dat type specifies the configuration for publishing
+messages to an Amazon Simple Queue Service (Amazon SQS) queue when
+Amazon S3 detects specified events.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +49,7 @@ This class has no description
 
 =head2 Events => ArrayRef[Str|Undef]
 
-  
+  A collection of bucket events for which to send notiications
 
 
 =head2 Id => Str
@@ -56,7 +59,8 @@ This class has no description
 
 =head2 Queue => Str
 
-  
+  The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon
+S3 publishes a message when it detects events of the specified type.
 
 
 
