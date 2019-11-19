@@ -23,7 +23,7 @@ the next page of results in a paginated response.
 
 =head2 OrganizationConfigRules => ArrayRef[L<Paws::Config::OrganizationConfigRule>]
 
-Retuns a list C<OrganizationConfigRule> objects.
+Returns a list of C<OrganizationConfigRule> objects.
 
 
 =head2 _request_id => Str

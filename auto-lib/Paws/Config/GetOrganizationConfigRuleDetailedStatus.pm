@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters                    => {
         AccountId               => 'MyAccountId',        # OPTIONAL
         MemberAccountRuleStatus => 'CREATE_SUCCESSFUL'
-        , # values: CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, UPDATE_SUCCESSFUL, UPDATE_FAILED, UPDATE_IN_PROGRESS, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS; OPTIONAL
+        , # values: CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_IN_PROGRESS, UPDATE_FAILED; OPTIONAL
       },    # OPTIONAL
       Limit     => 1,             # OPTIONAL
       NextToken => 'MyString',    # OPTIONAL

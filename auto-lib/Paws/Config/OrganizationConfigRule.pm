@@ -55,7 +55,7 @@ rule.
 
 =head2 B<REQUIRED> OrganizationConfigRuleArn => Str
 
-  The Amazon Resource Name (ARN) of organization config rule.
+  Amazon Resource Name (ARN) of organization config rule.
 
 
 =head2 B<REQUIRED> OrganizationConfigRuleName => Str
